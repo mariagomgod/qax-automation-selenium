@@ -1,44 +1,56 @@
-## Challenge 01: Abriendo la aplicación y validando el título de la página de registro
+# Misión Completa: Automatización Web con Selenium 🧪
+ 
+En esta misión se desarrollará un proyecto Maven que incluirá **varios escenarios de automatización**, desde login hasta scroll infinito, pasando por acciones avanzadas y manejo de iframes y modales.
 
-### Objetivo
+## ⚙ Requerimientos
 
-Automatizar la apertura de la aplicación web Parabank, navegar al formulario de registro y extraer el texto del encabezado principal (`<h1>`), verificando que el entorno de automatización funciona correctamente.
+- Java 17 o superior
+- Maven
+- IDE (IntelliJ IDEA o VS Code)
+- WebDriverManager
+- Selenium 4.x
+- Conexión a Internet
 
-### Contexto
+## 📝 Ejercicios
 
-Después de probar tu entorno con un "Hola Mundo", ahora interactuarás con una aplicación real: Parabank. El objetivo es asegurarte de que:
+### Ejercicio 01: Login Automático
+- URL: [Login Form](https://bonigarcia.dev/selenium-webdriver-java/login-form.html)
+- Objetivo: Automatizar el login con un usuario y contraseña de prueba.
+- Instrucciones:
+    1. Localizar los campos de **usuario** y **contraseña** sin usar `id` ni `name`.
+    2. Ingresar los datos de prueba.
+    3. Hacer click en el botón de login.
+    4. Imprimir en consola si el login fue exitoso.
 
-- El navegador se abre correctamente.
-- Puedes navegar a la URL: [https://parabank.parasoft.com/parabank/index.htm](https://parabank.parasoft.com/parabank/index.htm)
-- Puedes hacer clic en el enlace **Register**.
-- Puedes capturar y mostrar en consola el texto del encabezado `<h1>`.
+### Ejercicio 02: Acciones de Menú
+- URL: [Dropdown Menu](https://bonigarcia.dev/selenium-webdriver-java/dropdown-menu.html)
+- Objetivo: Realizar click, click derecho y doble click en los menús.
+- Instrucciones:
+    1. Localizar los menús usando CSS Selector o XPath avanzado.
+    2. Hacer click, doble click y click derecho en los elementos seleccionados.
+    3. Imprimir la acción realizada para cada elemento.
 
-### Requisitos Previos
+### Ejercicio 03: Scroll Infinito
+- URL: [Infinite Scroll](https://bonigarcia.dev/selenium-webdriver-java/infinite-scroll.html)
+- Objetivo: Practicar scroll infinito y detección de nuevos elementos.
+- Instrucciones:
+    1. Automatizar scroll hacia abajo hasta que se carguen al menos 20 nuevos elementos.
+    2. Imprimir en consola los textos de los elementos visibles.
 
-- Proyecto de referencia en `Stage_1/WarmUp/project_initial/qa-automation`.
-- Dependencias de Selenium/Playwright (según el stack en Java) y Maven instaladas.
-- Conexión a Internet.
+### Ejercicio 04: Calculadora Aleatoria
+- URL: [Random Calculator](https://bonigarcia.dev/selenium-webdriver-java/random-calculator.html)
+- Objetivo: Realizar operaciones matemáticas automáticamente.
+- Instrucciones:
+    1. Localizar los botones de la calculadora usando XPath o CSS Selectors.
+    2. Realizar operaciones básicas: suma, resta, división.
+    3. Imprimir los resultados de cada operación en consola.
 
-### Pasos
+### Ejercicio 05: Registro y Login
+- URL: [Parabank Register](https://parabank.parasoft.com/parabank/register.htm)
+- Objetivo: Registrar un nuevo usuario y luego hacer login con los mismos datos.
+- Instrucciones:
+    1. Localizar los campos del formulario sin usar `id` o `name`.
+    2. Ingresar datos de prueba y envía el formulario.
+    3. Después del registro, hacer login con el mismo usuario.
+    4. Verificar que el login fue exitoso e imprime un mensaje en consola.
 
-1. **Abrir la aplicación Parabank:**
-    ```java
-    driver.get("https://parabank.parasoft.com/parabank/index.htm");
-    ```
-
-2. **Hacer clic en "Register":**
-    - Localiza el enlace de registro por su texto o selector CSS.
-
-3. **Obtener el texto del `<h1>` en la página de registro:**
-    - Localizadores sugeridos:
-    - Imprime el texto en consola.
-
-4. **Cerrar el navegador.**
-
-### Criterio de Éxito
-
-El test debe imprimir en consola algo como:
-
-```
-Página de Registro cargada. Encabezado encontrado: Signing up is easy!
-```

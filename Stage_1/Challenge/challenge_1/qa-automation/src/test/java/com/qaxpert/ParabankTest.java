@@ -33,8 +33,13 @@ public class ParabankTest {
         );
         linkRegister.click();
 
+        // Obtenemos el texto del <h1> en la página de registro
+        WebElement titulo = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h1.title"))
+        );
+
         // Imprimimos en consola: Página de Registro cargada. Encabezado encontrado: Signing up is easy!
-        System.out.println("Página de Registro cargada. Encabezado encontrado: Signing up is easy!");
+        System.out.println("Página de Registro cargada. Encabezado encontrado: " + titulo.getText());
 
         // Cerramos el navegador
         driver.quit();

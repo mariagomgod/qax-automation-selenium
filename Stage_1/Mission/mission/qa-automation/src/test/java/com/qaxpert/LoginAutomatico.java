@@ -1,7 +1,6 @@
 package com.qaxpert;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
+import java.util.List;
 
 public class LoginAutomatico {
 
@@ -28,11 +28,11 @@ public class LoginAutomatico {
         // Abrimos la web de Boni García
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/login-form.html");
 
-        // Localizo los campos de usuario y contraseña sin usar id ni name
+        // Localizamos los campos de usuario y contraseña sin usar id ni name
         WebElement campoLogin = driver.findElement(By.xpath("//input[@type='text' and @class='form-control']"));
         WebElement campoPassword = driver.findElement(By.xpath("//input[@type='password' and @class='form-control']"));
 
-        // Ingreso los datos de prueba
+        // Ingresamos los datos de prueba
         campoLogin.sendKeys("user");
         campoPassword.sendKeys("user");
 
@@ -42,10 +42,22 @@ public class LoginAutomatico {
         );
         botonSubmit.click();
 
-        // Imprimo si el login fue exitoso
-        WebElement loginExitoso = driver.findElement(By.id("success"));
-        WebElement loginFallido = driver.findElement(By.id("invalid"));
+        // Imprimimos si el login fue exitoso
+        List<WebElement> loginExitoso = driver.findElements(By.id("success"));
+        List<WebElement> loginFallido = driver.findElements(By.id("invalid"));
 
+        boolean esExitoso = !loginExitoso.isEmpty() && loginExitoso.get(0).isDisplayed();
+        boolean esFallido = !loginFallido.isEmpty() && loginFallido.get(0).isDisplayed();
 
+        if (esExitoso) {
+            System.out.println("Login existoso");
+        } else if (esFallido) {
+            System.out.println("Login fallido");
+        } else {
+            System.out.println("No se mostró ningún mensaje");
+        }
+
+        // Cerramos el navegador
+        driver.quit();
     }
 }
