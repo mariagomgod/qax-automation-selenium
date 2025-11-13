@@ -29,18 +29,18 @@ public class LoginAutomatico {
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/login-form.html");
 
         // Localizamos los campos de usuario y contraseña sin usar id ni name
-        WebElement campoLogin = driver.findElement(By.xpath("//input[@type='text' and @class='form-control']"));
-        WebElement campoPassword = driver.findElement(By.xpath("//input[@type='password' and @class='form-control']"));
+        WebElement txtLogin = driver.findElement(By.xpath("//input[@type='text' and @class='form-control']"));
+        WebElement txtPassword = driver.findElement(By.xpath("//input[@type='password' and @class='form-control']"));
 
         // Ingresamos los datos de prueba
-        campoLogin.sendKeys("user");
-        campoPassword.sendKeys("user");
+        txtLogin.sendKeys("user");
+        txtPassword.sendKeys("user");
 
         // Hacemos click en el botón Submit
-        WebElement botonSubmit = wait.until(
+        WebElement btnSubmit = wait.until(
                 ExpectedConditions.elementToBeClickable(By.xpath("//button[@type='submit' and @class='btn btn-outline-primary mt-2']"))
         );
-        botonSubmit.click();
+        btnSubmit.click();
 
         // Imprimimos si el login fue exitoso
         List<WebElement> loginExitoso = driver.findElements(By.id("success"));

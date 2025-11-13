@@ -31,25 +31,25 @@ public class CalculadoraAleatoria {
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/random-calculator.html");
 
         // Localizamos los botones de la calculadora usando XPath o CSS Selectors
-        WebElement botonC = wait.until(ExpectedConditions.elementToBeClickable(
+        WebElement btnC = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//span[@class='clear btn btn-outline-danger' and normalize-space()='C']")));
 
-        WebElement botonSuma = wait.until(ExpectedConditions.elementToBeClickable(
+        WebElement btnSuma = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//span[@class='operator btn btn-outline-success' and normalize-space()='+']")));
 
-        WebElement botonResta = wait.until(ExpectedConditions.elementToBeClickable(
+        WebElement btnResta = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//span[@class='operator btn btn-outline-success' and normalize-space()='-']")));
 
-        WebElement botonDivision = wait.until(ExpectedConditions.elementToBeClickable(
+        WebElement btnDivision = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//span[@class='operator btn btn-outline-success' and normalize-space()='÷']")));
 
-        WebElement botonIgual = wait.until(ExpectedConditions.elementToBeClickable(
+        WebElement btnIgual = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//span[@class='btn btn-outline-warning' and normalize-space()='=']")));
 
-        WebElement botonDos = wait.until(ExpectedConditions.elementToBeClickable(
+        WebElement btnDos = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//span[@class='btn btn-outline-primary' and normalize-space()='2']")));
 
-        WebElement botonSeis = wait.until(ExpectedConditions.elementToBeClickable(
+        WebElement btnSeis = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//span[@class='btn btn-outline-primary' and normalize-space()='6']")));
 
         WebElement display = wait.until(ExpectedConditions.elementToBeClickable(
@@ -59,43 +59,43 @@ public class CalculadoraAleatoria {
 
         // Hacemos 5 operaciones sin asserts para desactivar la aleatoriedad que indica la página
         for (int i = 0; i < 5; i++) {
-            botonSeis.click();
-            botonSuma.click();
-            botonDos.click();
-            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", botonIgual);
-            botonC.click();
+            btnSeis.click();
+            btnSuma.click();
+            btnDos.click();
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnIgual);
+            btnC.click();
         }
 
         // Operación resta
-        botonSeis.click();
-        botonResta.click();
-        botonDos.click();
+        btnSeis.click();
+        btnResta.click();
+        btnDos.click();
         // Utilizo JavaScript para el clic, invocándolo directamente, debido al diseño de la página y no por error de los localizadores
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", botonIgual);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnIgual);
 
         String resultadoResta = display.getText().trim();
         System.out.println("Resultado: " + resultadoResta);
         assertEquals("4", resultadoResta);
 
-        botonC.click();
+        btnC.click();
 
         // Operación suma
-        botonSeis.click();
-        botonSuma.click();
-        botonDos.click();
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", botonIgual);
+        btnSeis.click();
+        btnSuma.click();
+        btnDos.click();
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnIgual);
 
         String resultadoSuma = display.getText().trim();
         System.out.println("Resultado: " + resultadoSuma);
         assertEquals("8", resultadoSuma);
 
-        botonC.click();
+        btnC.click();
 
         // Operación división
-        botonSeis.click();
-        botonDivision.click();
-        botonDos.click();
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", botonIgual);
+        btnSeis.click();
+        btnDivision.click();
+        btnDos.click();
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnIgual);
 
         String resultadoDivision = display.getText().trim();
         System.out.println("Resultado: " + resultadoDivision);

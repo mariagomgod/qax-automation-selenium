@@ -34,42 +34,41 @@ public class RegistroYLogin {
         driver.get("https://parabank.parasoft.com/parabank/register.htm");
 
         // Localizamos los campos de texto del formulario de registro
-        List<WebElement> camposTexto = driver.findElements(
-                By.cssSelector("form[action='register.htm'] input.input[type='text']")
-        );
+        // Generamos datos dinámicos
+        String uniqueSuffix = String.valueOf(System.currentTimeMillis());
 
-        if (camposTexto.size() != 9) {
-            throw new IllegalStateException("Se esperaban 9 campos de texto y hay: " + camposTexto.size());
-        }
+        String firstName      = "Nombre_" + uniqueSuffix;
+        String lastName       = "Apellido_" + uniqueSuffix;
+        String street         = "Calle_" + uniqueSuffix;
+        String city           = "Ciudad_" + uniqueSuffix;
+        String state          = "Estado_" + uniqueSuffix;
+        String zipCode        = String.valueOf((int)(Math.random() * 90000) + 10000); // 5 dígitos
+        String phoneNumber    = "6" + (int)(Math.random() * 1_000_0000);             // algo tipo 6XXXXXXX
+        String ssn            = uniqueSuffix.substring(uniqueSuffix.length() - 9);    // últimos 9 dígitos
+        String username       = "user_" + uniqueSuffix;
+        String password       = "Pwd-" + UUID.randomUUID().toString().substring(0, 8);
 
-        camposTexto.get(0).sendKeys("NombreTest");
-        camposTexto.get(1).sendKeys("ApellidoTest");
-        camposTexto.get(2).sendKeys("Calle Falsa 123");
-        camposTexto.get(3).sendKeys("Madrid");
-        camposTexto.get(4).sendKeys("Madrid");
-        camposTexto.get(5).sendKeys("28080");
-        camposTexto.get(6).sendKeys("600000000");
-        camposTexto.get(7).sendKeys("123-45-6789");
-        // Creamos un username único
-        String username = "user_" + System.currentTimeMillis();
-        camposTexto.get(8).sendKeys(username);
+        // Rellenamos el formulario por atributos (name)
+        driver.findElement(By.name("customer.firstName")).sendKeys(firstName);
+        driver.findElement(By.name("customer.lastName")).sendKeys(lastName);
+        driver.findElement(By.name("customer.address.street")).sendKeys(street);
+        driver.findElement(By.name("customer.address.city")).sendKeys(city);
+        driver.findElement(By.name("customer.address.state")).sendKeys(state);
+        driver.findElement(By.name("customer.address.zipCode")).sendKeys(zipCode);
+        driver.findElement(By.name("customer.phoneNumber")).sendKeys(phoneNumber);
+        driver.findElement(By.name("customer.ssn")).sendKeys(ssn);
 
-        List<WebElement> passwords = driver.findElements(By.cssSelector("form[action='register.htm'] input.input[type='password']"));
-
-        WebElement campoPassword = passwords.get(0);
-        WebElement campoConfirmPassword = passwords.get(1);
-
-        String password = "Pwd-" + UUID.randomUUID().toString().substring(0, 8);
-        campoPassword.sendKeys(password);
-        campoConfirmPassword.sendKeys(password);
+        driver.findElement(By.name("customer.username")).sendKeys(username);
+        driver.findElement(By.name("customer.password")).sendKeys(password);
+        driver.findElement(By.name("repeatedPassword")).sendKeys(password);
 
         // Clicamos en botón de Register
-        WebElement botonRegister = wait.until(
+        WebElement btnRegister = wait.until(
                 ExpectedConditions.elementToBeClickable(
                         By.cssSelector("form#customerForm input.button[type='submit'][value='Register']")
                 )
         );
-        botonRegister.click();
+        btnRegister.click();
 
         // Verificamos el mensaje de éxito
         WebElement mensaje = wait.until(
@@ -88,22 +87,22 @@ public class RegistroYLogin {
         );
         linkLogOut.click();
 
-        WebElement campoUsernameLogin = wait.until(
+        WebElement txtUsernameLogin = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(By.name("username"))
         );
-        campoUsernameLogin.sendKeys(username);
+        txtUsernameLogin.sendKeys(username);
 
-        WebElement campoPasswordLogin = wait.until(
+        WebElement txtPasswordLogin = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(By.name("password"))
         );
-        campoPasswordLogin.sendKeys(password);
+        txtPasswordLogin.sendKeys(password);
 
-        WebElement buttonLogin = wait.until(
+        WebElement btnLogin = wait.until(
                 ExpectedConditions.elementToBeClickable(
                         By.cssSelector("input.button[value='Log In']")
                 )
         );
-        buttonLogin.click();
+        btnLogin.click();
 
         // Verificamos que el login fue existoso
         WebElement tituloAccounts = wait.until(
