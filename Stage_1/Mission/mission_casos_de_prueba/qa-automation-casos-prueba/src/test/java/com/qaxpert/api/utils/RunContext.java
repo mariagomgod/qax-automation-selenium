@@ -6,6 +6,7 @@ public class RunContext {
 
     private static Integer operandoUno;
     private static Integer operandoDos;
+    private static String username;
 
     //Pasamos Chromedriver por RunContext para que solo se inicialice una vez y se abra una sola
     // ventana de Chrome para todos los tests en lugar de una por cada test
@@ -36,5 +37,13 @@ public class RunContext {
 
     public static ChromeDriver getDriver() {
         return driver;
+    }
+
+    public static void setUsername(String username) {
+        RunContext.username = username;
+    }
+
+    public static String getUsername() {
+        return username;
     }
 }

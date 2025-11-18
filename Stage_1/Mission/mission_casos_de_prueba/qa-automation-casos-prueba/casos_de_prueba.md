@@ -130,13 +130,4 @@ En esta misión se desarrollará un proyecto Maven que incluirá **varios escena
   - **Runners:** configuración del runner para ejecutar los tests.
   - **Steps:** una clase por cada ejercicio, donde se definen los pasos de cada test.
   - **Utils:** incluye el **RunContext**, que sirve para compartir estado y dependencias entre los steps.
-  - *NOTA:* ## 🧪 Cómo he realizado los tests:
-- Me he basado en el **patrón de diseño Page Object Model (POM)** que separa los tests de la UI: cada página se modela como una clase con sus **selectores** y **acciones**.
-  **Resultado:** tests más **legibles**, **reutilizables** y **fáciles de mantener** ante cambios en la interfaz.
-- He organizado el proyecto en varias carpetas:
-    - **Config:** configuración de las páginas web utilizadas en los distintos ejercicios.
-    - **Pages:** contiene las clases que representan cada página, con sus selectores y acciones.
-    - **Runners:** configuración del runner para ejecutar los tests.
-    - **Steps:** una clase por cada ejercicio, donde se definen los pasos de cada test (he añadido una clase extra, "StepsSetup", para que el ChromeDriver esté disponible antes de cualquier setup de steps).
-    - **Utils:** incluye el **RunContext**, que sirve para compartir estado y dependencias entre los steps.
-    - *NOTA:* he ido documentando aquellas líneas de código que he creido más difíciles de entender o su propósito en los tests, con un comentario encima de cada una de ellas.
+  - *NOTA:* he ido documentando aquellas líneas de código que he creido más difíciles de entender o su propósito en los tests, con un comentario encima de cada una de ellas.
