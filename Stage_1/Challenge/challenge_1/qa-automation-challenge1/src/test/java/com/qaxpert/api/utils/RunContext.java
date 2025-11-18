@@ -4,8 +4,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class RunContext {
 
-    private static Integer operandoUno;
-    private static Integer operandoDos;
     private static String username;
 
     //Pasamos Chromedriver por RunContext para que solo se inicialice una vez y se abra una sola
@@ -14,23 +12,6 @@ public class RunContext {
 
     public RunContext() {}
 
-    public static void setOperandoUno(Integer operandoUno) {
-
-        RunContext.operandoUno = operandoUno;
-    }
-
-    public static Integer getOperandoUno() {
-        return operandoUno;
-    }
-
-    public static void setOperandoDos(Integer operandoDos) {
-        RunContext.operandoDos = operandoDos;
-    }
-
-    public static Integer getOperandoDos() {
-
-        return operandoDos;
-    }
     public static void setDriver(ChromeDriver driver) {
         RunContext.driver = driver;
     }
