@@ -1,0 +1,43 @@
+### Localizadores necesarios para completar un flujo de compra end-to-end, utilizando la pagina http://www.testingyes.com/onlineshop/
+
+- **Menú hamburguesa:** By.cssSelector("i.material-icons.d-inline")
+- **Dropdown "Clothes":** By.cssSelector("a.dropdown-item[href*='3-clothes']")
+- **Imagen primer producto:** By.cssSelector("img[alt='Hummingbird printed t-shirt']")
+- **Dropdown "Size":** By.cssSelector("select#group_1")
+- **Opción selección "Color":** By.cssSelector("#group_2 input.input-color[value='8']")
+- **Opción selección "Quantity":** By.id("quantity_wanted")
+- **Botón "Add to Cart":** By.cssSelector("button.add-to-cart[data-button-action='add-to-cart']")
+- **Botón "Proceed to Checkout":** By.cssSelector("a.btn.btn-primary[href*='cart?action=show']")
+- **Botón "Proceed to Checkout" de la Shooping Cart:** By.cssSelector("a.btn.btn-primary[href='http://www.testingyes.com/onlineshop/order']")
+- **Formulario: Personal Information:** 
+  - By.cssSelector("form#customer-form input[name='id_gender'][value='1']")
+  - By.cssSelector("form#customer-form input[name='firstname']")
+  - By.cssSelector("form#customer-form input[name='lastname']")
+  - By.cssSelector("form#customer-form input[name='email']")
+  - By.cssSelector("form#customer-form input[name='password']")
+  - By.cssSelector("form#customer-form input[name='birthday']")
+  - By.cssSelector("form#customer-form input[name='newsletter']")
+  - By.cssSelector("form#customer-form input[name='psgdpr']")
+  - By.cssSelector("form#customer-form button[data-link-action='register-new-customer']")
+- **Formulario: Addresses:** 
+  - By.cssSelector("#checkout-addresses-step input[name='firstname']")
+  - By.cssSelector("#checkout-addresses-step input[name='lastname']")
+  - By.cssSelector("#checkout-addresses-step input[name='company']")
+  - By.cssSelector("#checkout-addresses-step input[name='address1']")
+  - By.cssSelector("#checkout-addresses-step input[name='address2']")
+  - By.cssSelector("#checkout-addresses-step input[name='city']")
+  - By.cssSelector("#checkout-addresses-step select[name='id_state']")
+  - By.cssSelector("#checkout-addresses-step input[name='postcode']")
+  - By.cssSelector("#checkout-addresses-step input[name='id_country']")
+  - By.cssSelector("#checkout-addresses-step input[name='phone']")
+  - By.cssSelector("#checkout-addresses-step button[name='confirm-addresses']"
+- **Formulario: Shipping method:** 
+  - By.cssSelector("#delivery_option_2")
+  - By.cssSelector("#delivery_message")
+  - By.cssSelector("#checkout-delivery-step button[name='confirmDeliveryOption']")
+- **Formulario: Payment:**
+  - By.cssSelector("#payment-option-1")
+  - By.cssSelector("#payment-option-2")
+  - By.id("conditions_to_approve[terms-and-conditions]")
+  - By.cssSelector("#payment-confirmation button.btn.btn-primary")
+
