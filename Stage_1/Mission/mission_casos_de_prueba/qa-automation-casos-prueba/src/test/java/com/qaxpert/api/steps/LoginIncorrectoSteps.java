@@ -8,6 +8,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import static com.qaxpert.api.config.Config.HEROKUAPP_PAGE;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LoginIncorrectoSteps {
 
@@ -35,6 +36,7 @@ public class LoginIncorrectoSteps {
 
     @Then("veo un mensaje de login fallido")
     public void msjLoginFallido() {
-        loginIncorrectoPage.msjLoginFallido();
+        String mensaje = loginIncorrectoPage.msjLoginFallido();
+        assertEquals("Login failed! Please ensure the username and password are valid.", mensaje);
     }
 }

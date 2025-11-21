@@ -8,6 +8,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import static com.qaxpert.api.config.Config.HEROKUAPP_PAGE;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class NavegacionEnElMenuSteps {
 
@@ -30,16 +31,16 @@ public class NavegacionEnElMenuSteps {
 
     @Then("imprimo en consola el título de la homepage")
     public void imprimirTituloHomePage() {
-        navegacionEnElMenuPage.imprimirTituloHomePage();
+        assertTrue(navegacionEnElMenuPage.imprimirTituloHomePage());
     }
 
     @Then("imprimo en consola el título History")
     public void imprimirTituloHistory() {
-        navegacionEnElMenuPage.imprimirTituloHistory();
+        assertTrue(navegacionEnElMenuPage.imprimirTituloHistory());
     }
 
     @Then("imprimo en consola el título Profile")
     public void imprimirTituloProfile() {
-        navegacionEnElMenuPage.imprimirTituloProfile();
+        assertTrue(navegacionEnElMenuPage.imprimirTituloProfile());
     }
 }

@@ -8,6 +8,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import static com.qaxpert.api.config.Config.HEROKUAPP_APPOINTMENT_PAGE;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MakeAppointmentSteps {
 
@@ -40,6 +41,6 @@ public class MakeAppointmentSteps {
 
     @Then("veo el mensaje Appointment Confirmation")
     public void msjConfirmacionCitaExistoso() {
-        makeAppointmentPage.msjConfirmacionCitaExistoso();
+        assertTrue(makeAppointmentPage.msjConfirmacionCitaExistoso());
     }
 }

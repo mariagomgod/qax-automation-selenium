@@ -8,6 +8,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import static com.qaxpert.api.config.Config.LOGIN_PAGE;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LoginAutomaticoSteps {
 
@@ -44,8 +45,8 @@ public class LoginAutomaticoSteps {
     }
 
     @Then("el sistema muestra un mensaje de error de credenciales")
-    public void verificarLoginFallido() {
-        loginPage.verificarLoginFallido();
+    public void loginFallidoMostrado() {
+        assertTrue(loginPage.loginFallidoMostrado());
     }
 
     @Then("deja los campos de usuario y contraseña vacíos")

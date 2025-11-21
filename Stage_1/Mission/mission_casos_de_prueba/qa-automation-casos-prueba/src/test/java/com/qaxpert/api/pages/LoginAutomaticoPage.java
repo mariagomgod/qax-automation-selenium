@@ -50,11 +50,11 @@ public class LoginAutomaticoPage extends BasePage {
         escribirCredenciales("user", "testing");
     }
 
-    public void verificarLoginFallido() {
+    public boolean loginFallidoMostrado() {
         WebElement errorMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(errorLocator));
 
         System.out.println("Login exitoso: " + errorMsg.getText());
-        assertTrue(errorMsg.isDisplayed());
+        return errorMsg.isDisplayed();
     }
 
     public void credencialesVacias() {

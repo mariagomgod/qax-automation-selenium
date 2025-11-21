@@ -8,6 +8,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import static com.qaxpert.api.config.Config.HEROKUAPP_PAGE;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LoginCorrectoSteps {
 
@@ -34,8 +35,8 @@ public class LoginCorrectoSteps {
     }
 
     @Then("veo el encabezado Make Appointment")
-    public void encabezadoMakeAppointment() {
-        loginCorrectoPage.encabezadoMakeAppointment();
+    public void encabezadoMakeAppointmentMostrado() {
+        assertTrue(loginCorrectoPage.encabezadoMakeAppointmentMostrado());
     }
 
     @Then("cierro sesión")

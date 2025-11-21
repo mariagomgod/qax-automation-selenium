@@ -5,8 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 public class LoginIncorrectoPage extends BasePage {
 
     private final By btnMakeAppointmentLocator = By.id("btn-make-appointment");
@@ -48,11 +46,13 @@ public class LoginIncorrectoPage extends BasePage {
         btnLogin.click();
     }
 
-    public void msjLoginFallido() {
+    public String msjLoginFallido() {
         WebElement msjLoginFallido = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(msjLoginFallidoLocator)
         );
-        assertEquals("Login failed! Please ensure the username and password are valid.", msjLoginFallido.getText());
-        System.out.println(msjLoginFallido.getText());
+
+        String texto = msjLoginFallido.getText();
+        System.out.println(texto);
+        return texto;
     }
 }

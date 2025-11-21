@@ -5,8 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 public class NavegacionEnElMenuPage extends BasePage {
 
     private final By burgerMenuLocator = By.id("menu-toggle");
@@ -31,25 +29,25 @@ public class NavegacionEnElMenuPage extends BasePage {
         homeLink.click();
     }
 
-    public void imprimirTituloHomePage() {
+    public boolean imprimirTituloHomePage() {
         WebElement homePageTitle = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(homepageTitleLocator)
         );
 
         System.out.println(homePageTitle.getText());
-        assertTrue(homePageTitle.isDisplayed());
+        return homePageTitle.isDisplayed();
     }
 
-    public void imprimirTituloHistory() {
+    public boolean imprimirTituloHistory() {
         WebElement historyTitle = wait.until(
                 ExpectedConditions.elementToBeClickable(historyTitleLocator)
         );
 
         System.out.println(historyTitle.getText());
-        assertTrue(historyTitle.isDisplayed());
+        return historyTitle.isDisplayed();
     }
 
-    public void imprimirTituloProfile() {
+    public boolean imprimirTituloProfile() {
         WebElement burgerMenuIcon = wait.until(
                 ExpectedConditions.elementToBeClickable(burgerMenuLocator)
         );
@@ -66,6 +64,6 @@ public class NavegacionEnElMenuPage extends BasePage {
         );
 
         System.out.println(profileTitle.getText());
-        assertTrue(profileTitle.isDisplayed());
+        return profileTitle.isDisplayed();
     }
 }

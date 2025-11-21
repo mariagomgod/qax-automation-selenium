@@ -5,8 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 public class MakeAppointmentPage extends BasePage {
 
     private final By btnMakeAppointmentLocator = By.id("btn-make-appointment");
@@ -93,11 +91,11 @@ public class MakeAppointmentPage extends BasePage {
         btnBookAppointment.click();
     }
 
-    public void msjConfirmacionCitaExistoso() {
+    public boolean msjConfirmacionCitaExistoso() {
         WebElement msjConfirmacionCitaExistoso = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(msjAppointmentConfirmationLocator)
         );
         System.out.println("Inicio de sesión exitoso: " + msjConfirmacionCitaExistoso.getText());
-        assertTrue(msjConfirmacionCitaExistoso.isDisplayed());
+        return msjConfirmacionCitaExistoso.isDisplayed();
     }
 }
