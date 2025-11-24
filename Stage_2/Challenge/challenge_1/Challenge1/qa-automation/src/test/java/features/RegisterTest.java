@@ -108,6 +108,8 @@ public class RegisterTest {
         registerPage.setConfirmPassword("Testing@123");// password diferente a propósito
         // Enviamos el formulario
         registerPage.clickSubmit();
+        // VERIFICACION: No la podemos hacer hasta que se corrija el Endpoint de Country (no nos deja avanzar).
+        // Por tanto, el mensaje no lo podemos validar
     }
 
     private void fillRegistrationFormWithValidData() {
