@@ -270,9 +270,22 @@ Para Asegurar que todos los elementos de entrada, selección, formularios, naveg
 - Crear un README.md con las instrucciones de ejecución. Si se encuentra un error, reportar la excepción de Selenium y el contexto del fallo.
 
 ---
-* **Generación de Reporte:** Ejecutar todos los tests utilizando el comando Maven:
+* **Generación de Reporte:** 
+- Ejecutar todos la suite de tests utilizando el comando Maven (Chrome):
     ```bash
     mvn clean test
+    ```
+- Ejecutar toda la suite de tests utilizando el comando Maven (Firefox):
+    ```bash
+    mvn clean test -Dbrowser=firefox
+    ```
+- Ejecutar toda la suite de test en modo headless (Chrome):
+    ```bash
+    mvn clean test -Dheadless=true
+    ```
+- Ejecutar toda la suite de test en modo headless (Firefox):
+    ```bash
+    mvn clean test -Dbrowser=firefox -Dheadless=true
     ```
 * **Comandos de ejecución para tests, browsers y Urls concretos:** 
 

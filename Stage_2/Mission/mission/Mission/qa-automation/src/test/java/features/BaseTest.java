@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -27,6 +28,8 @@ public class BaseTest {
         String browserName = System.getProperty("browser", "chrome"); // 'chrome' es el valor por defecto si no se pasa nada.
         // Leer la variable 'baseURL' pasada por consola, con un valor por defecto
         baseURL = System.getProperty("baseURL", "https://demoqa.com/");
+        // Para poder lanzar todos los tests en modo headless
+        boolean headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
         // Inicializar el driver basado en el valor
         if (browserName.equalsIgnoreCase("chrome")) {
             ChromeOptions options = new ChromeOptions();
@@ -40,6 +43,7 @@ public class BaseTest {
             // Permitir sobreescribirla con -DdownloadDir=...
             String downloadDir = System.getProperty("downloadDir", defaultDownloadDir);
 
+            // Para no interferir en los tests con popups y para controlar las descargas.
             Map<String, Object> prefs = new HashMap<>();
             prefs.put("credentials_enable_service", false);
             prefs.put("profile.password_manager_enabled", false);
@@ -48,10 +52,24 @@ public class BaseTest {
             prefs.put("download.default_directory", downloadDir);
             options.setExperimentalOption("prefs", prefs);
 
+            // Aquí activamos el modo headless si corresponde
+            if (headless) {
+                options.addArguments("--headless=new");      // modo headless moderno de Chrome
+                options.addArguments("--window-size=1920,1080");
+            }
+
             driver = new ChromeDriver(options); // Selenium Manager auto-resuelve el driver
 
         } else if (browserName.equalsIgnoreCase("firefox")) {
-            driver = new FirefoxDriver();
+            FirefoxOptions ffOptions = new FirefoxOptions();
+
+            if (headless) {
+                ffOptions.addArguments("-headless");
+                ffOptions.addArguments("--width=1920");
+                ffOptions.addArguments("--height=1080");
+            }
+
+            driver = new FirefoxDriver(ffOptions);
         } else {
             throw new IllegalArgumentException("Navegador no soportado: " + browserName);
         }

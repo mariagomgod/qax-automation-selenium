@@ -351,16 +351,45 @@ Then solo cambia la coordenada X y la coordenada Y permanece igual
 ## Historia de Usuario: Flujo Completo de Book Store
 URL: https://demoqa.com/books
 
-**Scenario 09: Arrastre libre**
+**Scenario 12: Login exitoso con credenciales creadas por API**
 ```
-Given que navego a "https://demoqa.com/dragabble"
-When arrastro el elemento por el contenedor a una posición distinta
-Then la posición del elemento cambia y se puede mover libremente
+Given que navego a la página de Login de Book Store "https://demoqa.com/login" 
+When inicio sesión con el username y password recibidos con username y password creados por API previamente
+Then veo mi username en la cabecera del perfil
+And la URL contiene "/profile"
 ```
-**Scenario 10: Arrastre restringido por eje**
+**Scenario 13: Búsqueda de libros en el catálogo**
 ```
-Given que navego a "https://demoqa.com/dragabble"
-And clico en la pestaña "Axis Restricted"
-When arrastro el elemento restringido en X intentando moverlo también en Y
-Then solo cambia la coordenada X y la coordenada Y permanece igual
+Given que ya estoy autenticado en Book Store
+And navego a la página de libros
+When busco un libro usando el término "JavaScript"
+Then la tabla muestra solo libros que coinciden con el término de búsqueda
+```
+**Scenario 14: Navegación al detalle de un libro**
+```
+Given que ya estoy autenticado en Book Store
+And navego a la página de libros
+And realizo una búsqueda válida de libros
+When hago clic en el título del primer libro listado
+Then navego a la página de detalle del libro
+And el título del detalle coincide con el título clicado
+And el autor del libro se muestra en la página de detalle
+```
+### NOTA: A partir del step "Then navego a la página de detalle del libro":
+- **No podemos automatizar** porque la funcionalidad de la propia web de demoQA está rota.
+- Al hacer clic en el título de un libro en /books, la aplicación DemoQA navega a una URL del tipo /books?book=9781449325862, pero la página de detalle se queda en blanco.
+- No se renderizan los elementos esperados (Title :, Author :, etc.).
+- Esto impide validar título y autor del libro.
+- **Conclusión:** el fallo se debe al entorno de DemoQA (bug de la aplicación), no al test automatizado.
+- Evidencias:
+  ![Evidencia_1](src/test/resources/upload/Captura%20de%20pantalla%202025-12-09%20145130.png)
+  ![Evidencia_2](src/test/resources/upload/Captura%20de%20pantalla%202025-12-09%20145200.png)
+
+**Scenario 15: Acceso al perfil y cierre de sesión**
+```
+Given que ya estoy autenticado en Book Store
+Then la tabla de libros del perfil es visible 
+When hago clic en el botón "Log out"
+Then soy redirigido a la página de Login
+And el botón "Login" se muestra de nuevo
 ```

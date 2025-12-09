@@ -17,21 +17,6 @@ public class TestDataFactory {
         return faker.name().lastName();
     }
 
-    public static String randomUsername() {
-        return faker.name().username();
-    }
-
-    public static String randomEmail() {
-        return faker.internet().emailAddress();
-    }
-
-    // ------------------------------
-    //  Contacto
-    // ------------------------------
-    public static String randomPhoneNumber() {
-        return faker.phoneNumber().cellPhone();  // o .phoneNumber()
-    }
-
     // ------------------------------
     //  Dirección
     // ------------------------------
@@ -43,14 +28,6 @@ public class TestDataFactory {
         return faker.address().city();
     }
 
-    public static String randomCountry() {
-        return faker.address().country();
-    }
-
-    public static String randomPostalCode() {
-        return faker.address().zipCode();
-    }
-
     // ------------------------------
     //  Internet/ Login
     // ------------------------------
@@ -58,22 +35,9 @@ public class TestDataFactory {
         return faker.internet().safeEmailAddress();
     }
 
-    public static String randomPassword() {
-        // minLength=8, maxLength=16, includeUppercase, includeSpecial
-        return faker.internet().password(8, 16, true, true);
-    }
-
-    public static String randomUrl() {
-        return faker.internet().url();
-    }
-
     // ------------------------------
     //  Datos de negocio
     // ------------------------------
-    public static String randomCompanyName() {
-        return faker.company().name();
-    }
-
     public static String randomJobTitle() {
         return faker.job().title();
     }
@@ -81,10 +45,6 @@ public class TestDataFactory {
     // ------------------------------
     //  Texto genérico
     // ------------------------------
-    public static String randomSentence() {
-        return faker.lorem().sentence();
-    }
-
     public static String randomParagraph() {
         return faker.lorem().paragraph();
     }

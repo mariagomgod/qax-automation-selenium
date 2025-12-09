@@ -14,13 +14,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.Duration;
+import java.util.List;
 
 public class BasePage {
 
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected Actions actions;
-
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -40,11 +40,6 @@ public class BasePage {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
     }
 
-    // Esperar a que un elemento contenga un texto concreto
-    protected void waitForTextInElement(By locator, String text) {
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(locator, text));
-    }
-
     protected WebElement waitForPresence(By locator) {
         // presenceOfElementLocated: no exige que el elemento sea visible, solo que exista en el DOM.
         return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
@@ -56,7 +51,7 @@ public class BasePage {
     }
 
     // Helper para lista de elementos
-    protected java.util.List<WebElement> findAll(By locator) {
+    protected List<WebElement> findAll(By locator) {
         return driver.findElements(locator);
     }
 
@@ -84,6 +79,7 @@ public class BasePage {
     }
 
     protected void type(By locator, String text) {
+        scrollToElement(locator);
         WebElement element = waitForVisibility(locator);
         element.clear();
         element.sendKeys(text);
@@ -122,10 +118,6 @@ public class BasePage {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
     }
 
-    protected void scrollDown(int pixels) {
-        ((JavascriptExecutor) driver).executeScript("window.scrollBy(0," + pixels + ");");
-    }
-
     // ------------------------------
     //  Alerts
     // ------------------------------
@@ -133,13 +125,8 @@ public class BasePage {
         return wait.until(ExpectedConditions.alertIsPresent());
     }
 
-
     protected void acceptAlert() {
         waitForAlert().accept();
-    }
-
-    protected void dismissAlert() {
-        waitForAlert().dismiss();
     }
 
     protected void sendKeysToAlert(String text) {
@@ -163,14 +150,6 @@ public class BasePage {
 
     protected void switchToDefault() {
         driver.switchTo().defaultContent();
-    }
-
-    // ------------------------------
-    //  Hover
-    // ------------------------------
-    protected void hover(By locator) {
-        WebElement element = waitForVisibility(locator);
-        actions.moveToElement(element).perform();
     }
 
     // ------------------------------
