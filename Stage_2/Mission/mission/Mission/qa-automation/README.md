@@ -274,26 +274,25 @@ Para Asegurar que todos los elementos de entrada, selección, formularios, naveg
     ```bash
     mvn clean test
     ```
-
 * **Comandos de ejecución para tests, browsers y Urls concretos:** 
 
 * AlertsTest: Con un navegador chrome y la url por consola
     ```bash
-    mvn clean test -Dtest=AlertsTest -Dbrowser=chrome -DbaseURL=https://demoqa.com/
+    mvn clean test -Dtest=ElementsModuleTest -Dbrowser=chrome -DbaseURL=https://demoqa.com/
     ```
 * IframeTest: Con valores por defecto
     ```bash
-    mvn clean test -Dtest=IframeTest
+    mvn clean test -Dtest=InteractionsTest
     ```
 * DragAndDropTest: Con un navegador firefox y la url por defecto
     ```bash
-    mvn clean test -Dtest=DragAndDropTest -Dbrowser=firefox
+    mvn clean test -Dtest=AlertsFramesWindowsTest -Dbrowser=firefox
     ```
 * ModalsTest: La url por consola
     ```bash
-    mvn clean test -Dtest=ModalsTest -DbaseURL=https://demoqa.com/
+    mvn clean test -Dtest=ElementsModuleTest -DbaseURL=https://demoqa.com/
     ```
 * NewWindowsTest: Con valores por defecto
     ```bash
-    mvn clean test -Dtest=NewWindowsTest
+    mvn clean test -Dtest=InteractionsTest
     ``` 

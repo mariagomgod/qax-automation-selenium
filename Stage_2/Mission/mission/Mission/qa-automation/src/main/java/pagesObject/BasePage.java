@@ -4,6 +4,7 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -178,6 +179,9 @@ public class BasePage {
     protected void dragAndDrop(By source, By target) {
         WebElement from = waitForVisibility(source);
         WebElement to = waitForVisibility(target);
+        // He introducido un scroll en el método porque para que no falle el drag and drop tiene que verse el elemento
+        // en el viewport. Es un bug conocido de ChromeDriver.
+        scrollToElement(source);
         actions.dragAndDrop(from, to).perform();
     }
 
@@ -197,8 +201,12 @@ public class BasePage {
      * yOffset > 0 → abajo, yOffset < 0 → arriba
      */
     protected void dragAndDropByOffset(By source, int xOffset, int yOffset) {
+        // He introducido un scroll en el método porque para que no falle el drag and drop tiene que verse el elemento
+        // en el viewport. Es un bug conocido de ChromeDriver.
+        scrollToElement(source);
         WebElement from = waitForVisibility(source);
-        actions.clickAndHold(from)
+        actions.moveToElement(from)
+                .clickAndHold()
                 .moveByOffset(xOffset, yOffset)
                 .release()
                 .perform();

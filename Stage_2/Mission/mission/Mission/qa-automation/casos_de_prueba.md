@@ -285,52 +285,59 @@ Then se actualiza el orden del grid y el elemento aparece en la nueva posición
 ```
 Given que navego a "https://demoqa.com/selectable" en modo lista
 When hago clic sobre "Item 3"
-Then el elemento queda marcado como seleccionado (clase o color de fondo)
+Then el elemento permanece seleccionado
 ```
 **Scenario 04: Selección múltiple en grid**
 ```
 Given que navego a "https://demoqa.com/selectable" en modo grid
 When selecciono varios elementos de la cuadrícula usando selección múltiple
-Then todos los elementos seleccionados permanecen en estado "seleccionado"
+Then todos los elementos seleccionados permanecen seleccionados
 ```
 ## Resizable
 **Scenario 05: Redimensionar al tamaño máximo**
 ```
 Given que navego a "https://demoqa.com/resizable" 
 When arrastro el control de redimensión hacia afuera con un gran offset
-Then el cuadro aumenta de tamaño hasta el máximo permitido por el viewport
+Then el cuadro aumenta de tamaño hasta la dimensión proporcionada
 ```
 **Scenario 06: Redimensión limitada por límites**
 ```
 Given que navego a "https://demoqa.com/resizable" con límites
 When intento redimensionar el cuadro más allá de sus límites
-Then el ancho y alto del cuadro no superan los límites definidos
+Then el ancho y alto del cuadro no exceden los límites predefinidos por la aplicación
 ```
 ## Droppable
 **Scenario 07: Arrastre básico**
 ```
-Given que navego a https://demoqa.com/droppable
+Given que navego a "https://demoqa.com/droppable"
 When arrastro el elemento "Draggable" al área "Droppable"
-Then el texto del destino cambia a "Dropped!" (o similar)
+Then el texto del destino cambia a "Dropped!" 
 And el elemento ya no está en su posición inicial
 ```
-**Scenario 08: Arrastre con prevent propagations**
+**Scenario 08: Arrastre con prevent propagations - Outer**
 ```
-Given que navego a https://demoqa.com/droppable 
+Given que navego a "https://demoqa.com/droppable"
 And clico en la pestaña "Prevent Propogation"
 When arrastro el elemento a las distintas áreas de destino
-Then solo el área inmediata registra la caída sin afectar contenedores padre o hijo
+Then solo el área inmediata registra la caída sin afectar contenedores padre o hijo 
+```
+**Scenario 09: Arrastre con prevent propagations - Inner**
+```
+Given que navego a "https://demoqa.com/droppable"
+And clico en la pestaña "Prevent Propogation"
+When arrastro el elemento a las distintas áreas de destino
+Then solo el área inmediata registra la caída sin afectando a contenedores padre o hijo 
 ```
 ## Dragabble
-**Scenario 09: Arrastre libre**
+**Scenario 10: Arrastre libre**
 ```
-Given que navego a https://demoqa.com/dragabble
+Given que navego a "https://demoqa.com/dragabble"
 When arrastro el elemento por el contenedor a una posición distinta
 Then la posición del elemento cambia y se puede mover libremente
 ```
-**Scenario 10: Arrastre restringido por eje**
+**Scenario 11: Arrastre restringido por eje**
 ```
-Given que navego a https://demoqa.com/dragabble 
+Given que navego a "https://demoqa.com/dragabble" 
 And clico en la pestaña "Axis Restricted"
 When arrastro el elemento restringido en X intentando moverlo también en Y
 Then solo cambia la coordenada X y la coordenada Y permanece igual
@@ -346,13 +353,13 @@ URL: https://demoqa.com/books
 
 **Scenario 09: Arrastre libre**
 ```
-Given que navego a https://demoqa.com/dragabble
+Given que navego a "https://demoqa.com/dragabble"
 When arrastro el elemento por el contenedor a una posición distinta
 Then la posición del elemento cambia y se puede mover libremente
 ```
 **Scenario 10: Arrastre restringido por eje**
 ```
-Given que navego a https://demoqa.com/dragabble 
+Given que navego a "https://demoqa.com/dragabble"
 And clico en la pestaña "Axis Restricted"
 When arrastro el elemento restringido en X intentando moverlo también en Y
 Then solo cambia la coordenada X y la coordenada Y permanece igual
