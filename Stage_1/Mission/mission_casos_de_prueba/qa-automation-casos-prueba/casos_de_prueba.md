@@ -1,133 +1,79 @@
-# Misión Completa: Automatización Web con Selenium 🧪
- 
-En esta misión se desarrollará un proyecto Maven que incluirá **varios escenarios de automatización**, desde login hasta scroll infinito, pasando por acciones avanzadas y manejo de iframes y modales.
+```javascript
+Feature: Prácticas de automatización web
+  Como tester de interfaces web
+  Quiero practicar distintos flujos de interacción en aplicaciones de prueba
+  Para validar comportamientos clave como login, navegación, scroll y registro
 
-## ⚙ Requerimientos
+  Scenario: CP01 - Login automático con credenciales de prueba
+    Given el usuario accede a la página "Login Form"
+    And dispone de un usuario y contraseña de prueba
+    When el usuario introduce las credenciales en el formulario de login
+    And hace clic en el botón de login
+    Then el acceso al sistema se procesa correctamente
+    And se muestra en consola un mensaje indicando si el login fue exitoso
 
-- Java 17 o superior
-- Maven
-- IDE (IntelliJ IDEA o VS Code)
-- WebDriverManager
-- Selenium 4.x
-- Conexión a Internet
+  Scenario: CP02 - Acciones de menú con clicks y doble click
+    Given el usuario accede a la página "Dropdown Menu"
+    And se muestran los elementos del menú en pantalla
+    When el usuario realiza clic, doble clic y clic derecho sobre los menús definidos
+    Then cada acción se ejecuta correctamente sobre el elemento correspondiente
+    And se registra en consola la acción realizada para cada elemento
 
-## 📝 Ejercicios
+  Scenario: CP03 - Scroll infinito hasta cargar nuevos elementos
+    Given el usuario accede a la página "Infinite Scroll"
+    When el usuario realiza scroll hacia abajo de forma continuada
+    Then se cargan al menos 20 nuevos elementos en la página
+    And se muestran en consola los textos de los elementos visibles
 
-## Ejercicio 01: Login Automático
-- URL: [Login Form](https://bonigarcia.dev/selenium-webdriver-java/login-form.html)
-- Objetivo: Automatizar el login con un usuario y contraseña de prueba.
-- Instrucciones:
-    1. Localizar los campos de **usuario** y **contraseña** sin usar `id` ni `name`.
-    2. Ingresar los datos de prueba.
-    3. Hacer click en el botón de login.
-    4. Imprimir en consola si el login fue exitoso.
+  Scenario: CP04 - Operaciones en calculadora aleatoria
+    Given el usuario accede a la página "Random Calculator"
+    And la calculadora está visible en la página
+    When el usuario realiza operaciones básicas de suma, resta y división
+    Then cada operación se ejecuta correctamente
+    And el resultado de cada operación se muestra en consola
 
----
+  Scenario: CP05 - Registro y login en Parabank
+    Given el usuario accede a la página "Parabank Register"
+    And dispone de datos de registro válidos
+    When el usuario completa el formulario de registro y envía la información
+    Then el registro se completa correctamente
+    And el usuario puede iniciar sesión con las mismas credenciales
+    And el sistema confirma que el login es exitoso y se muestra un mensaje en consola
 
-## Ejercicio 02: Acciones de Menú
-- URL: [Dropdown Menu](https://bonigarcia.dev/selenium-webdriver-java/dropdown-menu.html)
-- Objetivo: Realizar click, click derecho y doble click en los menús.
-- Instrucciones:
-    1. Localizar los menús usando CSS Selector o XPath avanzado.
-    2. Hacer click, doble click y click derecho en los elementos seleccionados.
-    3. Imprimir la acción realizada para cada elemento.
+  Scenario: CP06 - Login correcto en CURA Healthcare Service
+    Given el usuario accede a la página principal de "CURA Healthcare Service"
+    And el usuario dispone de credenciales válidas
+    When el usuario hace clic en el botón "Make Appointment"
+    And el usuario introduce las credenciales válidas en el formulario de login
+    And hace clic en el botón "Login"
+    Then se muestra el encabezado "Make Appointment"
+    And se registra en consola el mensaje "Inicio de sesión exitoso"
 
----
+  Scenario: CP07 - Login incorrecto en CURA Healthcare Service
+    Given el usuario accede a la página principal de "CURA Healthcare Service"
+    And el usuario dispone de credenciales inválidas
+    When el usuario hace clic en el botón "Make Appointment"
+    And el usuario introduce las credenciales inválidas en el formulario de login
+    And hace clic en el botón "Login"
+    Then se muestra un mensaje de error indicando que el login no ha sido existoso 
 
-## Ejercicio 03: Scroll Infinito
-- URL: [Infinite Scroll](https://bonigarcia.dev/selenium-webdriver-java/infinite-scroll.html)
-- Objetivo: Practicar scroll infinito y detección de nuevos elementos.
-- Instrucciones:
-    1. Automatizar scroll hacia abajo hasta que se carguen al menos 20 nuevos elementos.
-    2. Imprimir en consola los textos de los elementos visibles.
+  Scenario: CP08 - Agendar una cita médica en CURA Healthcare Service
+    Given el usuario ha iniciado sesión correctamente en "CURA Healthcare Service"
+    And la página "Make Appointment" está visible
+    When el usuario selecciona "Seoul CURA Healthcare Center" en el desplegable
+    And marca la opción "Apply for hospital readmission"
+    And selecciona el programa "Medicare"
+    And abre el calendario y selecciona una fecha disponible
+    And escribe "Cita automatizada con QA Xpert" en el campo de comentarios
+    And hace clic en el botón "Book Appointment"
+    Then se muestra la página de confirmación de cita
+    And se visualiza el mensaje "Appointment Confirmation"
 
----
-
-## Ejercicio 04: Calculadora Aleatoria
-- URL: [Random Calculator](https://bonigarcia.dev/selenium-webdriver-java/random-calculator.html)
-- Objetivo: Realizar operaciones matemáticas automáticamente.
-- Instrucciones:
-    1. Localizar los botones de la calculadora usando XPath o CSS Selectors.
-    2. Realizar operaciones básicas: suma, resta, división.
-    3. Imprimir los resultados de cada operación en consola.
-
----
-
-## Ejercicio 05: Registro y Login
-- URL: [Parabank Register](https://parabank.parasoft.com/parabank/register.htm)
-- Objetivo: Registrar un nuevo usuario y luego hacer login con los mismos datos.
-- Instrucciones:
-    1. Localizar los campos del formulario sin usar `id` o `name`.
-    2. Ingresar datos de prueba y envía el formulario.
-    3. Después del registro, hacer login con el mismo usuario.
-    4. Verificar que el login fue exitoso e imprime un mensaje en consola.
----
-
-### Exercise 05: Login Correcto
-- **URL:** [CURA Healthcare Service - Login](https://katalon-demo-cura.herokuapp.com/profile.php#login)
-- **Objetivo:** Validar el acceso al sistema con credenciales correctas.
-- **Instrucciones:**
-    1. Haz clic en el botón **Make Appointment** desde la página principal.
-    2. Ingresa las credenciales:
-        - Username: `John Doe`
-        - Password: `ThisIsNotAPassword`
-    3. Presiona el botón **Login**.
-    4. Verifica que se muestre el encabezado **Make Appointment** y muestra en consola:
-       ```
-       Inicio de sesión exitoso
-       ```
-
----
-### Exercise 06: Login incorrecto
-- **URL:** [CURA Healthcare Service - Login](https://katalon-demo-cura.herokuapp.com/profile.php#login)
-- **Objetivo:** Validar el acceso al sistema con credenciales correctas.
-- **Instrucciones:**
-    1. Haz clic en el botón **Make Appointment** desde la página principal.
-    2. Ingresa las credenciales invalidas:
-        - Username: `QAX`
-        - Password: `ThisIsNotAPassword`
-    3. Presiona el botón **Login**.
-    4. Verifica el mensaje
-       ```
-       Login failed! Please ensure the username and password are valid.
-       ```
-
----
-
-### Exercise 07: Agendar una Cita
-- **URL:** [Make Appointment](https://katalon-demo-cura.herokuapp.com/#appointment)
-- **Objetivo:** Automatizar el flujo completo de agendamiento de una cita médica.
-- **Instrucciones:**
-    1. Selecciona la opción **Seoul CURA Healthcare Center** del dropdown.
-    2. Marca la casilla **Apply for hospital readmission**.
-    3. Elige el programa **Medicare**.
-    4. Abre el calendario y selecciona una fecha disponible.
-    5. En el campo **Comment**, escribe:
-       ```
-       Cita automatizada con QA Xpert
-       ```
-    6. Haz clic en **Book Appointment** y valida que aparezca el mensaje **Appointment Confirmation**.
-
----
-
-### Exercise 08: Navegación en el Menú
-- **URL:** [CURA Healthcare Service](https://katalon-demo-cura.herokuapp.com/)
-- **Objetivo:** Validar los enlaces del menú lateral.
-- **Instrucciones:**
-    1. Abre el menú lateral (ícono ☰).
-    2. Haz clic en los enlaces **Home**, **History**, **Profile** y **Logout** uno por uno.
-    3. Imprime en consola el título o texto principal de cada página.
-    4. Cierra sesión al finalizar la ejecución.
-
----
-
-## 🧪 Cómo he realizado los tests:
-- Me he basado en el **patrón de diseño Page Object Model (POM)** que separa los tests de la UI: cada página se modela como una clase con sus **selectores** y **acciones**.
-  **Resultado:** tests más **legibles**, **reutilizables** y **fáciles de mantener** ante cambios en la interfaz.
-- He organizado el proyecto en varias carpetas:
-  - **Config:** configuración de las páginas web utilizadas en los distintos ejercicios.
-  - **Pages:** contiene las clases que representan cada página, con sus selectores y acciones.
-  - **Runners:** configuración del runner para ejecutar los tests.
-  - **Steps:** una clase por cada ejercicio, donde se definen los pasos de cada test.
-  - **Utils:** incluye el **RunContext**, que sirve para compartir estado y dependencias entre los steps.
-  - *NOTA:* he ido documentando aquellas líneas de código que he creido más difíciles de entender o su propósito en los tests, con un comentario encima de cada una de ellas.
+  Scenario: CP09 - Navegación en el menú lateral de CURA Healthcare Service
+    Given el usuario ha iniciado sesión correctamente en "CURA Healthcare Service"
+    And la página principal está visible
+    When el usuario abre el menú lateral
+    And navega a las secciones "Home", "History", "Profile" y "Logout" una por una
+    Then en cada sección se muestra el título o texto principal correspondiente
+    And al finalizar la navegación el usuario queda correctamente desconectado del sistema
+```

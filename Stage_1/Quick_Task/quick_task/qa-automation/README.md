@@ -1,3 +1,23 @@
+# Quick Task: Automatización Web con Selenium 🧪
+
+## 🎯 Objetivos
+
+- Crear un proyecto Maven desde cero y estructurarlo correctamente para automatización.
+- Localizar elementos web usando XPath, CSS Selectors, y axes avanzados, evitando id o name.
+- Imprimir resultados en consola y realizar validaciones básicas.
+
+## ⚙ Requerimientos
+
+- Java 17 o superior
+- Maven
+- IDE (IntelliJ IDEA o VS Code)
+- WebDriverManager
+- JUnit5
+- Selenium 4.x
+- Conexión a Internet
+
+---
+
 ## Localización de elementos en Amazon
 
 El test `navegarPorLaWeb` automatiza, con Selenium, un recorrido por la web de Amazon:
@@ -79,3 +99,9 @@ Al usar XPaths como:
 
 ```xpath
 //span[normalize-space()='Outlet']
+```
+
+---
+
+## ⚙ ¿Cómo ejecutar el test?
+Con el comando `mvn clean test` desde la terminal.
