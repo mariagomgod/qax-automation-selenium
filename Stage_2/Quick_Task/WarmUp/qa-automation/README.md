@@ -1,4 +1,20 @@
-## Quick Task
+# Quick Task: Acciones avanzadas con Selenium WebDriver 🧪
+
+## 🎯 Objetivo
+
+- Desarrollar destreza en la localización y acciones avanzadas con Selenium WebDriver.
+
+## ⚙ Requerimientos
+
+- Java 17 o superior
+- Maven
+- IDE (IntelliJ IDEA o VS Code)
+- WebDriverManager
+- JUnit5
+- Selenium 4.x
+- Conexión a Internet
+
+---
 
 ###  Instrucciones
 
@@ -24,3 +40,8 @@
         * Iframe: https://demo.automationtesting.in/Frames.html
 
     - Ejecutar todos los casos de prueba.
+
+---
+
+## ⚙ ¿Cómo ejecutar los tests?
+Con el comando `mvn clean test` desde la terminal.

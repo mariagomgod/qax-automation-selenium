@@ -78,8 +78,8 @@
 │   │   └── WarmUp
 │   │   │   └── qa-automation
 │   │   │       └── locators-compra.md
+│   │   │       └── locators_shadow-iframe-popup.md
 │   │   │       └── README.md
-│   │   │       └── shadow-iframe-popup.md
 ```
 
 ### 🧪 Cómo ejecutar las pruebas:

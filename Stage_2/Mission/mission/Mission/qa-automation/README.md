@@ -1,4 +1,55 @@
-# Mission #2: Automatizando un E2E con comportamientos avanzados
+# Mission 2: Automatizando un E2E con comportamientos avanzados
+
+Esta misión ha sido diseñada para elevar su nivel como automatizador a una nueva categoría. Dejaremos atrás las interacciones básicas para enfocarnos en la simulación de flujos de usuario completos y complejos, teniendo en cuenta los comportamientos avanzados y los desafíos reales del navegador, como la gestión de ventanas, iframes y las acciones precisas del ratón.
+
+## 🎯 Objetivos
+
+- Crear un proyecto Maven desde cero y estructurarlo correctamente para automatización. 
+- Localizar elementos web usando XPath, CSS Selectors, y axes avanzados, evitando id o name.
+- Automatizar formularios de login y registro.
+- Ejecutar acciones de usuario: click, doble click, click derecho, hover, drag & drop, scroll infinito.
+- Interactuar con menús, iframes, alerts y modales.
+- Imprimir resultados en consola y realizar validaciones básicas.
+- Manejar múltiples pruebas en archivos separados dentro de un mismo proyecto.
+
+
+## ⚙ Requerimientos
+
+- Java 17 o superior
+- Maven
+- IDE (IntelliJ IDEA o VS Code)
+- WebDriverManager
+- Selenium 4.x
+- TestNG
+- JavaFaker (para generar datos variables)
+- Conexión a Internet
+
+---
+## 📂 Instrucciones
+
+- Crear proyecto Maven. Incluir dependencias para Selenium, TestNG, WebDriverManager y JavaFaker.
+
+- Implementar setup/tearDown.
+
+- Implementar todos los métodos de interacción avanzada de forma genérica (recibiendo localizadores):
+
+- Crear clases Page Object (PO) por funcionalidad  que hereden de BasePage.
+
+- Clases de Prueba: Crear una clase de prueba por cada HU.
+
+- Cada Criterio de Aceptación (AC) se convierte en un método @Test.
+
+- Utilizar JavaFaker dentro de la capa de pruebas para generar datos variables, garantizando que el código sea reproducible y escalable.
+
+- Usar aserciones explícitas de TestNG para confirmar cada caso de prueba
+
+- Documentar el comando para ejecutar la suite completa enviando variables por consola
+
+- Ejecutar las pruebas de forma separada y conjunta para validar la estabilidad de la automatización.
+
+- Crear un README.md con las instrucciones de ejecución. Si se encuentra un error, reportar la excepción de Selenium y el contexto del fallo.
+
+---
 
 **Base url: https://demoqa.com/**
 
@@ -243,35 +294,9 @@ Para Asegurar que todos los elementos de entrada, selección, formularios, naveg
 -  Cerrar Sesión (Logout):
     - Se hace clic en el botón 'Logout'.
     - Se verifica que la URL regresa a la página de inicio o a la página de Login y que el botón de 'Login' es visible nuevamente.
-
 ---
-## Instrucciones
-
-- Crear proyecto Maven. Incluir dependencias para Selenium, TestNG, WebDriverManager y JavaFaker.
-
-- Implementar setup/tearDown.
-
-- Implementar todos los métodos de interacción avanzada de forma genérica (recibiendo localizadores):
-
-- Crear clases Page Object (PO) por funcionalidad  que hereden de BasePage.
-
-- Clases de Prueba: Crear una clase de prueba por cada HU.
-
-- Cada Criterio de Aceptación (AC) se convierte en un método @Test.
-
-- Utilizar JavaFaker dentro de la capa de pruebas para generar datos variables, garantizando que el código sea reproducible y escalable.
-
-- Usar aserciones explícitas de TestNG para confirmar cada caso de prueba
-
-- Documentar el comando para ejecutar la suite completa enviando variables por consola
-
-- Ejecutar las pruebas de forma separada y conjunta para validar la estabilidad de la automatización.
-
-- Crear un README.md con las instrucciones de ejecución. Si se encuentra un error, reportar la excepción de Selenium y el contexto del fallo.
-
----
-* **Generación de Reporte:** 
-- Ejecutar todos la suite de tests utilizando el comando Maven (Chrome):
+## Generación de Reporte: 
+- Ejecutar toda la suite de tests utilizando el comando Maven (Chrome):
     ```bash
     mvn clean test
     ```

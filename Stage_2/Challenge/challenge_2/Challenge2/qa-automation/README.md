@@ -1,4 +1,24 @@
-## Challenge 02: Completar la automatización
+## Challenge 02: Aumentando cobertura y escalabilidad
+
+## 🎯 Objetivos
+
+- Dominar Comportamientos Avanzados
+- Optimizar la Ejecución con TestNG
+- Implementar POM
+- Validar la Estabilidad Continua
+
+
+## ⚙ Requerimientos
+
+- Java 17 o superior
+- Maven
+- IDE (IntelliJ IDEA o VS Code)
+- WebDriverManager
+- Selenium 4.x
+- TestNG
+- Conexión a Internet
+
+---
 
 ## Historia de Usuario: Gestión de Alertas
 

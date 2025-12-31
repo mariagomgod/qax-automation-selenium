@@ -3,6 +3,25 @@
 En este reto vas a ponerte en modo QA Automation real.
 La idea es practicar lo que pasa en un proyecto de verdad: leer el código de otro, mejorar los locators, refactorizar donde haga falta, agregar asserts que tengan sentido de negocio y sumar nuevos tests sin romper lo que ya funciona.
 
+## 🎯 Objetivos
+
+- Dominar Comportamientos Avanzados
+- Optimizar la Ejecución con TestNG
+- Implementar POM
+- Validar la Estabilidad Continua
+
+
+## ⚙ Requerimientos
+
+- Java 17 o superior
+- Maven
+- IDE (IntelliJ IDEA o VS Code)
+- WebDriverManager
+- Selenium 4.x
+- TestNG
+- Conexión a Internet
+
+---
 ---
 
 ## Historia de Usuario – Registro de Nuevo Usuario
