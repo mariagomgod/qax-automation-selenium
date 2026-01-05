@@ -1,0 +1,117 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.qax.automation</groupId>
+  <artifactId>qa-automation-screenplay</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>qa-automation</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <selenium.version>4.19.1</selenium.version>
+    <testng.version>7.11.0</testng.version>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+
+      <dependency>
+          <groupId>org.seleniumhq.selenium</groupId>
+          <artifactId>selenium-java</artifactId>
+          <version>${selenium.version}</version>
+      </dependency>
+
+      <dependency>
+          <groupId>io.github.bonigarcia</groupId>
+          <artifactId>webdrivermanager</artifactId>
+          <version>5.5.0</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.testng</groupId>
+          <artifactId>testng</artifactId>
+          <version>${testng.version}</version>
+          <scope>test</scope>
+      </dependency>
+
+      <!-- Serenity BDD Core -->
+      <dependency>
+          <groupId>net.serenity-bdd</groupId>
+          <artifactId>serenity-core</artifactId>
+          <version>4.1.14</version>
+      </dependency>
+
+      <!-- Serenity Screenplay -->
+      <dependency>
+          <groupId>net.serenity-bdd</groupId>
+          <artifactId>serenity-screenplay</artifactId>
+          <version>4.1.14</version>
+      </dependency>
+
+      <!-- Serenity Screenplay Web (Selenium) -->
+      <dependency>
+          <groupId>net.serenity-bdd</groupId>
+          <artifactId>serenity-screenplay-webdriver</artifactId>
+          <version>4.1.14</version>
+      </dependency>
+
+      <!-- Serenity + Cucumber -->
+      <dependency>
+          <groupId>net.serenity-bdd</groupId>
+          <artifactId>serenity-cucumber</artifactId>
+          <version>4.1.14</version>
+      </dependency>
+
+      <!-- Cucumber Java -->
+      <dependency>
+          <groupId>io.cucumber</groupId>
+          <artifactId>cucumber-java</artifactId>
+          <version>6.10.4</version>
+      </dependency>
+
+      <!-- Cucumber JUnit -->
+      <dependency>
+          <groupId>io.cucumber</groupId>
+          <artifactId>cucumber-junit-platform-engine</artifactId>
+          <version>7.14.0</version>
+      </dependency>
+
+      <!-- Assertions (Hamcrest) -->
+      <dependency>
+          <groupId>org.hamcrest</groupId>
+          <artifactId>hamcrest</artifactId>
+          <version>2.2</version>
+      </dependency>
+  </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+                <configuration>
+                    <includes>
+                        <include>**/*Test.java</include>
+                    </includes>
+                    <reportsDirectory>target/surefire-reports</reportsDirectory>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>net.serenity-bdd.maven.plugins</groupId>
+                <artifactId>serenity-maven-plugin</artifactId>
+                <version>4.1.14</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>aggregate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
