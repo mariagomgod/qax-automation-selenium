@@ -71,9 +71,7 @@ El ejercicio se apoya en el contexto de **Serenity BDD + Cucumber (BDD)** y Sele
 - Ejecutar en modo Headless:
     - Si ya está configurado en serenity.conf:
       ```
-      chrome {
-      headless = true
-      }
+      headless.mode = true
       ```
     - Ejecutar con el comando:
   ```bash
