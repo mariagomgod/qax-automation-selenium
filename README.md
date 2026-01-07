@@ -94,6 +94,10 @@
 │   │   └── WarmUp
 │   │       └── qa-automation-screenplay
 │   │       │   └── README.md
+│   └── Challenge/
+│   │   └── challenge_1
+│   │       └── qax-base-project-screenplay-challenge1
+│   │       │   └── README.md
 ```
 
 ### 🧪 Cómo ejecutar las pruebas (Selenium WebDriver) - Stages 1 y 2:
