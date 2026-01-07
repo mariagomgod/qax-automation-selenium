@@ -78,12 +78,8 @@ Feature: Registro de usuario
 ## ♻️ ¿Qué Task podrías reutilizar si mañana hay un formulario de contacto?
 
 ### Task reutilizable
-**Completar formulario de registro con datos válidos**
+**Question**
 
 ### ¿Por qué?
 
-- No está acoplada a un formulario específico.
-
-**Solo variarían:**
-- Los elementos de la UI
-- Algunas Interacciones internas
+- Porque valida un resultado transversal (éxito/confirmación del envío) que se repite en muchos formularios y normalmente se muestra con patrones de UI comunes, por lo que puede aplicarse sin depender de los campos específicos.

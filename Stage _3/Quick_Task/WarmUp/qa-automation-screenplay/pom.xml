@@ -9,80 +9,70 @@
   <url>http://maven.apache.org</url>
 
   <properties>
-    <selenium.version>4.19.1</selenium.version>
-    <testng.version>7.11.0</testng.version>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
+      <serenity.version>4.1.20</serenity.version>
+      <cucumber.version>7.18.0</cucumber.version>
+      <junit.version>4.13.2</junit.version>
   </properties>
 
   <dependencies>
-
-      <dependency>
-          <groupId>org.seleniumhq.selenium</groupId>
-          <artifactId>selenium-java</artifactId>
-          <version>${selenium.version}</version>
-      </dependency>
-
-      <dependency>
-          <groupId>io.github.bonigarcia</groupId>
-          <artifactId>webdrivermanager</artifactId>
-          <version>5.5.0</version>
-      </dependency>
-
-      <dependency>
-          <groupId>org.testng</groupId>
-          <artifactId>testng</artifactId>
-          <version>${testng.version}</version>
-          <scope>test</scope>
-      </dependency>
 
       <!-- Serenity BDD Core -->
       <dependency>
           <groupId>net.serenity-bdd</groupId>
           <artifactId>serenity-core</artifactId>
-          <version>4.1.14</version>
+          <version>${serenity.version}</version>
+      </dependency>
+
+      <!-- Serenity JUnit -->
+      <dependency>
+          <groupId>net.serenity-bdd</groupId>
+          <artifactId>serenity-junit</artifactId>
+          <version>${serenity.version}</version>
       </dependency>
 
       <!-- Serenity Screenplay -->
       <dependency>
           <groupId>net.serenity-bdd</groupId>
           <artifactId>serenity-screenplay</artifactId>
-          <version>4.1.14</version>
+          <version>${serenity.version}</version>
       </dependency>
 
       <!-- Serenity Screenplay Web (Selenium) -->
       <dependency>
           <groupId>net.serenity-bdd</groupId>
           <artifactId>serenity-screenplay-webdriver</artifactId>
-          <version>4.1.14</version>
+          <version>${serenity.version}</version>
       </dependency>
 
       <!-- Serenity + Cucumber -->
       <dependency>
           <groupId>net.serenity-bdd</groupId>
           <artifactId>serenity-cucumber</artifactId>
-          <version>4.1.14</version>
+          <version>${serenity.version}</version>
+      </dependency>
+
+      <!-- Serenity Ensure (Assertions) -->
+      <dependency>
+          <groupId>net.serenity-bdd</groupId>
+          <artifactId>serenity-ensure</artifactId>
+          <version>${serenity.version}</version>
       </dependency>
 
       <!-- Cucumber Java -->
       <dependency>
           <groupId>io.cucumber</groupId>
           <artifactId>cucumber-java</artifactId>
-          <version>6.10.4</version>
+          <version>${cucumber.version}</version>
       </dependency>
 
-      <!-- Cucumber JUnit -->
+      <!-- JUnit -->
       <dependency>
-          <groupId>io.cucumber</groupId>
-          <artifactId>cucumber-junit-platform-engine</artifactId>
-          <version>7.14.0</version>
-      </dependency>
-
-      <!-- Assertions (Hamcrest) -->
-      <dependency>
-          <groupId>org.hamcrest</groupId>
-          <artifactId>hamcrest</artifactId>
-          <version>2.2</version>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <version>${junit.version}</version>
+          <scope>test</scope>
       </dependency>
   </dependencies>
 
@@ -108,6 +98,29 @@
                     <execution>
                         <goals>
                             <goal>aggregate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Maven Failsafe (Integration tests) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>3.0.0-M5</version>
+                <configuration>
+                    <includes>
+                        <include>**/*Test.java</include>
+                        <include>**/Test*.java</include>
+                        <include>**/*TestSuite.java</include>
+                        <include>**/When*.java</include>
+                    </includes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
                         </goals>
                     </execution>
                 </executions>
