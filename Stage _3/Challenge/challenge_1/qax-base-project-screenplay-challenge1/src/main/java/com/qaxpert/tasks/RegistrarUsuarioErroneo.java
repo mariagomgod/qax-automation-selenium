@@ -24,7 +24,7 @@ public class RegistrarUsuarioErroneo implements Task {
     }
 
     // Este método permite crear el Task de forma legible desde el Step Definition
-    public static RegistrarUsuarioErroneo conContraseñaDiferentes(String username, String email, String password) {
+    public static RegistrarUsuarioErroneo conContraseniasDiferentes(String username, String email, String password) {
         return instrumented(RegistrarUsuarioErroneo.class,username, email, password);
     }
 

@@ -19,6 +19,7 @@
         <java.version>11</java.version>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <faker.version>1.0.2</faker.version>
 
         <!-- Versiones Serenity -->
         <serenity.version>4.1.20</serenity.version>
@@ -110,6 +111,14 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.36</version>
+        </dependency>
+
+        <!-- Javafaker para generar datos aleatorios -->
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>${faker.version}</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>

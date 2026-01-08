@@ -11,6 +11,7 @@ public class MensajeError implements Question<String> {
     public static MensajeError visible() {
         return new MensajeError();
     }
+
     @Override
     public String answeredBy(Actor actor) {
 
