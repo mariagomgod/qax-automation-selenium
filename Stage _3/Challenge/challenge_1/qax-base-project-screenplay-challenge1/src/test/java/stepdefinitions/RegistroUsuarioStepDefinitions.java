@@ -2,7 +2,6 @@ package stepdefinitions;
 
 import com.github.javafaker.Faker;
 import com.qaxpert.questions.CuentaCreada;
-import com.qaxpert.tasks.CerrarSesion;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.*;
@@ -17,11 +16,13 @@ import com.qaxpert.tasks.NavegarAlRegistro;
 import com.qaxpert.tasks.RegistrarUsuario;
 import com.qaxpert.tasks.RegistrarUsuarioErroneo;
 import com.qaxpert.questions.MensajeError;
+import static com.qaxpert.ui.RegisterPage.MESSAGE_ERROR;
 
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
+
 public class RegistroUsuarioStepDefinitions {
 
     @Managed
@@ -29,19 +30,12 @@ public class RegistroUsuarioStepDefinitions {
     private Actor comprador;
     // Faker para generar datos aleatorios
     private final Faker faker = new Faker(new Locale("es"));
-    // Variables para guardar el usuario/email creados en el Background del Rule
-    private String usuarioCreado;
-    private String emailCreado;
 
     @Before
     public void setUp() {
         // asignando habilidad al actor
         comprador = Actor.named("Anderson Montoya");
         comprador.can(BrowseTheWeb.with(browser));
-
-        // Reset de valores para cada escenario, es decir, cada vez que arranca un escenario, deja esas variables vacías
-        usuarioCreado = null;
-        emailCreado = null;
     }
 
     // Método para resolver tokens como <randomEmail>, <randomUser>, etc
@@ -65,10 +59,10 @@ public class RegistroUsuarioStepDefinitions {
                         + "@mailinator.com"; // cambia el dominio si tu sistema bloquea mails temporales
 
             case "<existingUser>":
-                return usuarioCreado;
+                return UsuarioContext.usuarioCreado;
 
             case "<existingEmail>":
-                return emailCreado;
+                return UsuarioContext.emailCreado;
 
             default:
                 return value; // si no es token, se respeta
@@ -88,31 +82,6 @@ public class RegistroUsuarioStepDefinitions {
     public void que_el_comprador_navega_a_la_opcion_de_registro() {
         comprador.attemptsTo(
                 NavegarAlRegistro.desdeElHome());
-    }
-
-
-    // -------------------- RULE BACKGROUND (DUPLICADOS) --------------------
-
-    @Given("que existe un usuario registrado previamente")
-    public void que_existe_un_usuario_registrado_previamente() {
-
-        // Creamos un usuario real (único) para luego provocar duplicados
-        usuarioCreado = resolveToken("<randomUser>");
-        emailCreado = resolveToken("<randomEmail>");
-
-        comprador.attemptsTo(
-                RegistrarUsuario.conLosDatos(usuarioCreado, emailCreado, "123456")
-        );
-
-        // Validamos que se creó (si no se crea, el escenario de duplicado no tendría sentido)
-        comprador.attemptsTo(
-                that(CuentaCreada.exitosamente()).isTrue()
-        );
-
-        // Evita intermitencias: salimos de la sesión y volvemos a registro
-        comprador.attemptsTo(
-                CerrarSesion.ahora()
-        );
     }
 
     // -------------------- ESCENARIO POSITIVO --------------------
@@ -164,7 +133,7 @@ public class RegistroUsuarioStepDefinitions {
     @Then("el sistema muestra un mensaje de error indicando que las contraseñas no coinciden")
     public void muestra_error_contrasenas_no_coinciden() {
         comprador.attemptsTo(
-                that(MensajeError.visible())
+                that(MensajeError.en(MESSAGE_ERROR))
                         .contains("Entered passwords don't match")
         );
     }
@@ -172,7 +141,7 @@ public class RegistroUsuarioStepDefinitions {
     @Then("el sistema muestra un mensaje indicando que los campos son obligatorios")
     public void muestra_mensaje_campos_obligatorios() {
         comprador.attemptsTo(
-                that(MensajeError.visible())
+                that(MensajeError.en(MESSAGE_ERROR))
                         .contains("Please enter a valid account username")
         );
     }
@@ -180,7 +149,7 @@ public class RegistroUsuarioStepDefinitions {
     @Then("el sistema muestra un mensaje de error indicando que la contraseña es demasiado corta")
     public void muestra_error_password_corta() {
         comprador.attemptsTo(
-                that(MensajeError.visible())
+                that(MensajeError.en(MESSAGE_ERROR))
                         .contains("Password must be at least 6 characters long.")
         );
     }
@@ -188,7 +157,7 @@ public class RegistroUsuarioStepDefinitions {
     @Then("el sistema muestra un mensaje de error indicando que el usuario ya existe")
     public void muestra_error_usuario_duplicado() {
         comprador.attemptsTo(
-                that(MensajeError.visible())
+                that(MensajeError.en(MESSAGE_ERROR))
                         .contains("An account is already registered with that username. Please choose another.")
         );
     }
@@ -196,7 +165,7 @@ public class RegistroUsuarioStepDefinitions {
     @Then("el sistema muestra un mensaje de error indicando que el email ya está registrado")
     public void muestra_error_email_duplicado() {
         comprador.attemptsTo(
-                that(MensajeError.visible())
+                that(MensajeError.en(MESSAGE_ERROR))
                         .contains("An account is already registered with your email address. Please log in.")
         );
     }
@@ -204,7 +173,7 @@ public class RegistroUsuarioStepDefinitions {
     @Then("el sistema muestra un mensaje de error indicando que el email no es válido")
     public void muestra_error_email_invalido() {
         comprador.attemptsTo(
-                that(MensajeError.visible())
+                that(MensajeError.en(MESSAGE_ERROR))
                         .contains("Please enter a valid email address including '@'.")
         );
     }
