@@ -6,7 +6,6 @@ import com.qaxpert.questions.SesionIniciada;
 import com.qaxpert.tasks.IniciarSesion;
 import com.qaxpert.tasks.NavegarAlLogin;
 import io.cucumber.datatable.DataTable;
-import stepdefinitions.UsuarioContext;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -24,24 +23,19 @@ import java.util.Map;
 import static com.qaxpert.ui.LoginPage.MESSAGE_ERROR;
 import static net.serenitybdd.screenplay.ensure.Ensure.that;
 
-public class LoginUsuarioStepsDefinitions {
+public class LoginUsuarioStepDefinitions {
 
     @Managed
     WebDriver browser;
     private Actor comprador;
     // Faker para generar datos aleatorios
     private final Faker faker = new Faker(new Locale("es"));
-    // Variable para guardar el usuario creado
-    private String usuarioCreado;
 
     @Before
     public void setUp() {
         // asignando habilidad al actor
         comprador = Actor.named("Anderson Montoya");
         comprador.can(BrowseTheWeb.with(browser));
-
-        // Reset de valor para cada escenario, es decir, cada vez que arranca un escenario, deja esa variable vacía
-        usuarioCreado = null;
     }
 
     // Método para resolver tokens como <existingUser>
