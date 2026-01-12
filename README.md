@@ -37,13 +37,13 @@
 >
 > #### Stage 3 (Work In Progress): Screenplay Pattern + Serenity BDD
 > - **Challenge:** ¿?
-    >   - Link a la carpeta del Challenge: ``
+    >   - Link a la carpeta del Challenge: `https://github.com/mariagomgod/qax-automation-selenium/tree/main/Stage%20_3/Challenge/challenge_1/qax-base-project-screenplay-challenge1`
 > - **Mission:** ¿?
     >   - Link a la carpeta de la Mission: ``
 > - **Quick Task:** Preparando el Entorno para un Framework Profesional, utilizando Serenity BDD y Cucumber (BDD)
     >   - Link a la carpeta de Quick Task: `https://github.com/mariagomgod/qax-automation-selenium/tree/main/Stage_3/Quick_Task/WarmUp`
 >
-## 🧱 2. Estructura del Repositorio (Work In Progress)
+## 🧱 2. Estructura del Repositorio 
 ```
 .
 ├── .gitignore   <-- Archivo para ignorar archivos que no deben subirse.
@@ -97,6 +97,10 @@
 │   └── Challenge/
 │   │   └── challenge_1
 │   │       └── qax-base-project-screenplay-challenge1
+│   │       │   └── README.md
+│   └── Mission/
+│   │   └── mission
+│   │       └── qax-base-project-screenplay-mission
 │   │       │   └── README.md
 ```
 
