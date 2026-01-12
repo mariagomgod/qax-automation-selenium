@@ -1,15 +1,16 @@
 package stepdefinitions;
 
 import com.github.javafaker.Faker;
-import com.qaxpert.questions.CuentaCreada;
-import com.qaxpert.tasks.CerrarSesion;
-import com.qaxpert.tasks.RegistrarUsuario;
+import com.qaxpert.questions.UsuarioAutenticadoOnlineShop;
+import com.qaxpert.tasks.LogoutOnlineShop;
+import com.qaxpert.tasks.NavegarAlHomeOnlineShop;
+import com.qaxpert.tasks.NavegarARegistroOnlineShop;
+import com.qaxpert.tasks.RegistrarUsuarioOnlineShop;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import net.serenitybdd.annotations.Managed;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
-import net.serenitybdd.screenplay.actions.Open;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Locale;
@@ -29,34 +30,33 @@ public class CommonUsuarioSteps {
     public void setUpCommon() {
         actor = Actor.named("Anderson Montoya");
         actor.can(BrowseTheWeb.with(browser));
-
-        // Reset por escenario (para no arrastrar datos)
         UsuarioContext.reset();
     }
 
     @Given("que existe un usuario registrado previamente")
     public void que_existe_un_usuario_registrado_previamente() {
 
-        UsuarioContext.usuarioCreado = ("user_" + faker.name().username())
-                .replaceAll("[^a-zA-Z0-9_]", "")
-                + "_" + System.currentTimeMillis();
-
         UsuarioContext.emailCreado = "qa_" + System.currentTimeMillis() + "_"
                 + UUID.randomUUID().toString().substring(0, 6)
                 + "@mailinator.com";
 
+        String nombre = faker.name().firstName();
+        String apellido = faker.name().lastName();
+
         actor.attemptsTo(
-                Open.url("https://amantesapescar.co/registro/"),
-                RegistrarUsuario.conLosDatos(UsuarioContext.usuarioCreado, UsuarioContext.emailCreado, "123456")
+                NavegarAlHomeOnlineShop.porUrl(),
+                NavegarARegistroOnlineShop.porUrl(),
+                RegistrarUsuarioOnlineShop.conLosDatos(nombre, apellido, UsuarioContext.emailCreado, "123456")
         );
 
         actor.attemptsTo(
-                that(CuentaCreada.exitosamente()).isTrue()
+                that(UsuarioAutenticadoOnlineShop.exitosamente()).isTrue(),
+                LogoutOnlineShop.porUrl()
         );
+    }
 
-        // Dejar sesión limpia para pruebas de login o reintentos
-        actor.attemptsTo(
-                CerrarSesion.ahora()
-        );
+    @Given("que existe un usuario registrado previamente con email")
+    public void que_existe_un_usuario_registrado_previamente_con_email() {
+        que_existe_un_usuario_registrado_previamente();
     }
 }
