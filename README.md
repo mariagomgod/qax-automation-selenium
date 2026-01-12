@@ -35,11 +35,11 @@
 > - **Quick Task:** Desarrollo de destrezas en la localización y acciones avanzadas con Selenium WebDriver.
 >   - Link a la carpeta de Quick Task: `https://github.com/mariagomgod/qax-automation-selenium/tree/main/Stage_2/Quick_Task/WarmUp`
 >
-> #### Stage 3 (Work In Progress): Screenplay Pattern + Serenity BDD
-> - **Challenge:** ¿?
+> #### Stage 3: Screenplay Pattern + Serenity BDD
+> - **Challenge:** 
     >   - Link a la carpeta del Challenge: `https://github.com/mariagomgod/qax-automation-selenium/tree/main/Stage%20_3/Challenge/challenge_1/qax-base-project-screenplay-challenge1`
-> - **Mission:** ¿?
-    >   - Link a la carpeta de la Mission: ``
+> - **Mission:** 
+    >   - Link a la carpeta de la Mission: `https://github.com/mariagomgod/qax-automation-selenium/tree/main/Stage%20_3/Mission/mission/qax-base-project-screenplay-mission`
 > - **Quick Task:** Preparando el Entorno para un Framework Profesional, utilizando Serenity BDD y Cucumber (BDD)
     >   - Link a la carpeta de Quick Task: `https://github.com/mariagomgod/qax-automation-selenium/tree/main/Stage_3/Quick_Task/WarmUp`
 >
