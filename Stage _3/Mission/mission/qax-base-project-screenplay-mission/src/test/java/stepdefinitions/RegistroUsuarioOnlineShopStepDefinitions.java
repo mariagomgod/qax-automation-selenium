@@ -20,7 +20,6 @@ import org.openqa.selenium.WebDriver;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.UUID;
 
 import static com.qaxpert.ui.OnlineShopRegisterPage.FIRST_NAME;
 import static com.qaxpert.ui.OnlineShopRegisterPage.REGISTER_ERROR;
@@ -40,22 +39,24 @@ public class RegistroUsuarioOnlineShopStepDefinitions {
         comprador.can(BrowseTheWeb.with(browser));
     }
 
-    @Given("que el usuario accede a la tienda online TestingYes")
-    public void que_el_usuario_accede_a_la_tienda_online_testingyes() {
-        comprador.attemptsTo(
-                NavegarAlHomeOnlineShop.porUrl(),
-                NavegarARegistroOnlineShop.porUrl()
-        );
-    }
-
     @When("el usuario se registra con los siguientes datos:")
     public void el_usuario_se_registra_con_los_siguientes_datos(DataTable dataTable) {
         List<Map<String, String>> datos = dataTable.asMaps(String.class, String.class);
         Map<String, String> fila = datos.get(0);
 
-        String nombre = resolverToken(fila.get("nombre"), "<randomFN>", faker.name().firstName());
-        String apellido = resolverToken(fila.get("apellido"), "<randomLN>", faker.name().lastName());
-        String email = resolveEmailToken(fila.get("email"));
+        String nombre = CommonUsuarioSteps.resolverToken(
+                fila.get("nombre"),
+                "<randomFN>",
+                faker.name().firstName()
+        );
+
+        String apellido = CommonUsuarioSteps.resolverToken(
+                fila.get("apellido"),
+                "<randomLN>",
+                faker.name().lastName()
+        );
+
+        String email = CommonUsuarioSteps.resolveEmailToken(fila.get("email"));
         String password = fila.get("password") == null ? "" : fila.get("password");
 
         comprador.attemptsTo(
@@ -85,37 +86,6 @@ public class RegistroUsuarioOnlineShopStepDefinitions {
                 that(MensajeValidacionHtml5.delCampo(FIRST_NAME)).isNotBlank()
         );
     }
-
-    // ---------------- Helpers ----------------
-
-    private String resolverToken(String value, String token, String reemplazo) {
-        if (value == null) return "";
-        String v = value.trim();
-        if (v.isEmpty()) return "";
-        if (v.equals(token)) return reemplazo;
-        return value;
-    }
-
-    private String resolveEmailToken(String value) {
-        if (value == null) return "";
-        String v = value.trim();
-
-        if (v.isEmpty()) return "";
-
-        if (v.equals("<randomEmail>")) {
-            return "qa_" + System.currentTimeMillis() + "_"
-                    + UUID.randomUUID().toString().substring(0, 6)
-                    + "@mailinator.com";
-        }
-
-        if (v.equals("<existingEmail>")) {
-            if (UsuarioContext.emailCreado == null) {
-                throw new IllegalStateException("UsuarioContext.emailCreado es null. Ejecuta el Given de usuario registrado previamente con email.");
-            }
-            return UsuarioContext.emailCreado;
-        }
-
-        return value;
-    }
 }
+
 
