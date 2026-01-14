@@ -79,6 +79,28 @@ En esta misión, pondré en práctica todo lo aprendido en los entrenamientos an
     - Regla de negocio: El sistema informa cuando no hay coincidencias.
     - Mensaje informativo:  "No products were found."
 
+#### 🧪 NOTA QA: Test fallido:
+#### GAP de Requisitos — Búsqueda sin resultados
+
+#### Criterio de aceptación (esperado)
+Cuando no existen coincidencias en la búsqueda, el sistema debe mostrar el mensaje:
+> **"No products were found."**
+
+#### Resultado actual (observado en TestingYes)
+Al realizar una búsqueda sin coincidencias, el sistema redirige a una página `page-not-found`
+y muestra el mensaje:
+> **"Sorry for the inconvenience."**
+
+#### Impacto
+El escenario negativo falla debido a una **desalineación entre el criterio de aceptación y el comportamiento real del sistema** (gap de requisitos).
+
+#### Evidencias
+Fallo de aserción:
+- **Expected:** `"No products were found."`
+- **Actual:** `"Sorry for the inconvenience."`
+- ![Captura de pantalla 2026-01-14 131440.png](src/test/resources/upload/Captura%20de%20pantalla%202026-01-14%20131440.png)
+- ![Captura de pantalla 2026-01-14 131631.png](src/test/resources/upload/Captura%20de%20pantalla%202026-01-14%20131631.png)
+- La **evidencia** también la encontramos en el reporte que se genera de serenity después de lanzar el comando de ejecución de los tests: target/site/serenity/index.html
 ---
 
 ## 📌 Historia de Usuario: Quick View de producto  #4
