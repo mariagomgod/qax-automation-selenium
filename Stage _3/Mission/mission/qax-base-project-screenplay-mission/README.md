@@ -133,6 +133,18 @@ Fallo de aserción:
     - Regla de negocio: El usuario puede modificar la cantidad del producto.
     - Resultado esperado: El precio se ajusta según la cantidad.
 
+#### 🧪 NOTA QA: Segundo Test fallido:
+
+#### Criterio de aceptación (esperado)
+> **El precio se ajusta según la cantidad.**
+
+#### Resultado actual (observado en TestingYes)
+> **Hay una condición de carrera entre cambiar la cantidad y añadir el artículo al carrito y por tanto, a veces solo incluye un articulo en lugar de 2 (condición que le he dado yo a la operación).**
+
+#### Evidencias
+Fallo de aserción:
+- La **evidencia** también la encontramos en el reporte que se genera de serenity después de lanzar el comando de ejecución de los tests: target/site/serenity/index.html
+
 ---
 
 ## 📌 Historia de Usuario: Gestión del carrito de compras  #6
