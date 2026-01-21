@@ -31,6 +31,7 @@ public class CommonUsuarioSteps {
         comprador = Actor.named("Anderson Montoya");
         comprador.can(BrowseTheWeb.with(browser));
         UsuarioContext.reset();
+        CarritoContext.reset();
     }
 
     // Único step para el Background

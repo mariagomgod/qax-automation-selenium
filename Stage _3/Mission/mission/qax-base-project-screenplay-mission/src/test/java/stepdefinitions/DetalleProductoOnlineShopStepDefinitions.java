@@ -40,13 +40,16 @@ public class DetalleProductoOnlineShopStepDefinitions {
 
     @When("el usuario abre el detalle de un producto existente")
     public void el_usuario_abre_el_detalle_de_un_producto_existente() {
+
         comprador.attemptsTo(
                 com.qaxpert.tasks.BuscarProductoOnlineShop.porTermino("hummingbird"),
-                AbrirDetalleProductoExistenteOnlineShop.desdeElListado()
+                com.qaxpert.tasks.AbrirDetalleProductoExistenteOnlineShop.desdeElListado()
         );
 
-        precioUnitario = Text.of(UNIT_PRICE).answeredBy(comprador);
-        comprador.attemptsTo(that(PRODUCT_TITLE).isDisplayed());
+        // Guardamos el precio del detalle para HU #6
+        CarritoContext.precioDetalle = net.serenitybdd.screenplay.questions.Text
+                .of(com.qaxpert.ui.OnlineShopProductDetailPage.UNIT_PRICE)
+                .answeredBy(comprador);
     }
 
     @When("el usuario cambia la talla y el color")
