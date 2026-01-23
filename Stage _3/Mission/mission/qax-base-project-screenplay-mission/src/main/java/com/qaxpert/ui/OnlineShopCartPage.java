@@ -24,5 +24,8 @@ public class OnlineShopCartPage {
 
     public static final Target EMPTY_CART_MESSAGE = Target.the("mensaje carrito vacío")
             .locatedBy("//div[contains(@class, 'cart-overview')]/span[@class='no-items' and normalize-space()]");
+
+    public static final Target BTN_PROCEED_TO_CHECKOUT = Target.the("botón Proceed to checkout")
+            .locatedBy("//div[contains(@class,'checkout')]//a[contains(@class,'btn') and normalize-space()]");
 }
 

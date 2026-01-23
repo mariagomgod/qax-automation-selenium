@@ -27,4 +27,7 @@ public class OnlineShopProductDetailPage {
 
     public static final Target BTN_ADD_TO_CART = Target.the("botón añadir al carrito")
             .locatedBy("//button[@data-button-action='add-to-cart' and not(@disabled)]");
+
+    public static final Target MODAL_BTN_PROCEED_TO_CHECKOUT = Target.the("botón Proceed to checkout de la modal")
+            .locatedBy("//div[@class='cart-content-btn']/a[contains(@class, 'btn')]");
 }

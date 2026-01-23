@@ -4,9 +4,9 @@ import com.qaxpert.questions.MensajeError;
 import com.qaxpert.questions.UsuarioAutenticadoOnlineShop;
 import com.qaxpert.tasks.IniciarSesionOnlineShop;
 import com.qaxpert.tasks.NavegarALoginOnlineShop;
-import com.qaxpert.tasks.NavegarAlHomeOnlineShop;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -34,7 +34,7 @@ public class LoginUsuarioOnlineShopStepDefinitions {
         comprador.can(BrowseTheWeb.with(browser));
     }
 
-    @When("el usuario inicia sesión con los siguientes datos:")
+    @And("el usuario inicia sesión con los siguientes datos:")
     public void el_usuario_inicia_sesion_con_los_siguientes_datos(DataTable dataTable) {
 
         List<Map<String, String>> datos = dataTable.asMaps(String.class, String.class);

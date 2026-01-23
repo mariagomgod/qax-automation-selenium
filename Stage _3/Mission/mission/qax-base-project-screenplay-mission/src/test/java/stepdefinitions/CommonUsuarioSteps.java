@@ -23,7 +23,7 @@ public class CommonUsuarioSteps {
     @Managed
     WebDriver browser;
 
-    private Actor comprador;
+    public static Actor comprador;
     private final Faker faker = new Faker(new Locale("es"));
 
     @Before
