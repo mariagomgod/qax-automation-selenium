@@ -1,8 +1,12 @@
 package stepdefinitions;
 
+import com.qaxpert.tasks.AbrirDetalleProductoExistenteOnlineShop;
+import com.qaxpert.tasks.AgregarAlCarritoDesdeDetalleOnlineShop;
+import com.qaxpert.tasks.BuscarProductoOnlineShop;
 import com.qaxpert.tasks.CambiarTallaYColorOnlineShop;
 import com.qaxpert.tasks.EliminarProductoDelCarritoOnlineShop;
 import com.qaxpert.tasks.IrAlCarritoOnlineShop;
+import com.qaxpert.ui.OnlineShopProductDetailPage;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -64,17 +68,16 @@ public class GestionCarritoOnlineShopStepDefinitions {
     public void que_el_usuario_tiene_un_producto_en_el_carrito(String producto) {
         // Reutiliza steps ya existentes llamando a Tasks directamente (sin duplicar anotaciones)
         comprador.attemptsTo(
-                com.qaxpert.tasks.BuscarProductoOnlineShop.porTermino(producto),
-                com.qaxpert.tasks.AbrirDetalleProductoExistenteOnlineShop.desdeElListado()
+                BuscarProductoOnlineShop.porTermino(producto),
+                AbrirDetalleProductoExistenteOnlineShop.desdeElListado()
         );
 
-        CarritoContext.precioDetalle = net.serenitybdd.screenplay.questions.Text
-                .of(com.qaxpert.ui.OnlineShopProductDetailPage.UNIT_PRICE)
+        CarritoContext.precioDetalle = Text.of(OnlineShopProductDetailPage.UNIT_PRICE)
                 .answeredBy(comprador);
 
         comprador.attemptsTo(
                 CambiarTallaYColorOnlineShop.enElDetalle(),
-                com.qaxpert.tasks.AgregarAlCarritoDesdeDetalleOnlineShop.ahora(),
+                AgregarAlCarritoDesdeDetalleOnlineShop.ahora(),
                 IrAlCarritoOnlineShop.porUrl()
         );
 

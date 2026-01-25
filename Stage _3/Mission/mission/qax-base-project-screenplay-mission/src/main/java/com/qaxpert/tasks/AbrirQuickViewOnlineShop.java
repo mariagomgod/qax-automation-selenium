@@ -1,5 +1,6 @@
 package com.qaxpert.tasks;
 
+import com.qaxpert.ui.OnlineShopProductListPage;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
@@ -32,7 +33,7 @@ public class AbrirQuickViewOnlineShop implements Task {
         WebDriver driver = BrowseTheWeb.as(actor).getDriver();
         // Se usó WebElementFacade porque es el elemento que devuelve Serenity al resolver un Target.
         // Permite interactuar de forma más estable (en este caso, hacer click por JS en Quick View).
-        WebElementFacade element = com.qaxpert.ui.OnlineShopProductListPage.FIRST_QUICK_VIEW.resolveFor(actor);
+        WebElementFacade element = OnlineShopProductListPage.FIRST_QUICK_VIEW.resolveFor(actor);
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click();", element);
     }

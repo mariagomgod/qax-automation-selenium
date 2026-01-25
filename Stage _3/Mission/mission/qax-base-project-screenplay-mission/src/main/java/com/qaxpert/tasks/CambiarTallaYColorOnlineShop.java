@@ -8,7 +8,6 @@ import net.serenitybdd.screenplay.waits.WaitUntil;
 
 import static com.qaxpert.ui.OnlineShopProductDetailPage.*;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
-import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isClickable;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 
 public class CambiarTallaYColorOnlineShop implements Task {

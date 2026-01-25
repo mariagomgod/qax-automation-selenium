@@ -1,6 +1,7 @@
 package stepdefinitions;
 
 import com.qaxpert.tasks.*;
+import com.qaxpert.ui.OnlineShopProductDetailPage;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -42,13 +43,12 @@ public class DetalleProductoOnlineShopStepDefinitions {
     public void el_usuario_abre_el_detalle_de_un_producto_existente() {
 
         comprador.attemptsTo(
-                com.qaxpert.tasks.BuscarProductoOnlineShop.porTermino("hummingbird"),
-                com.qaxpert.tasks.AbrirDetalleProductoExistenteOnlineShop.desdeElListado()
+                BuscarProductoOnlineShop.porTermino("hummingbird"),
+                AbrirDetalleProductoExistenteOnlineShop.desdeElListado()
         );
 
         // Guardamos el precio del detalle para HU #6
-        CarritoContext.precioDetalle = net.serenitybdd.screenplay.questions.Text
-                .of(com.qaxpert.ui.OnlineShopProductDetailPage.UNIT_PRICE)
+        CarritoContext.precioDetalle = Text.of(OnlineShopProductDetailPage.UNIT_PRICE)
                 .answeredBy(comprador);
     }
 
